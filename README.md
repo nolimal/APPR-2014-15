@@ -1,5 +1,7 @@
-# Analiza podatkov s programom R, 2014/15
 
+# Analiza podatkov s programom R, 2014/15
+#Mentor 
+sasa
 Repozitorij z gradivi pri predmetu APPR v študijskem letu 2014/15.
 
 ## Tematika
