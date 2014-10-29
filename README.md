@@ -7,6 +7,10 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2014/15.
 
 Matevz Nolimal
 
+#Mentor
+
+Janos Vidali
+
 ## Tematika
 
 Izbrali si boste temo, s katero se bo vaš projekt ukvarjal. Tukaj boste
