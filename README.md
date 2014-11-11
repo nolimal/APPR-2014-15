@@ -5,11 +5,11 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2014/15.
 
 #Avtor
 
-Matevz Nolimal
+Matevž Nolimal
 
 #Mentor
 
-Janos Vidali
+Janoš Vidali
 
 ## Trg dela znotraj Evropske Unije
 
