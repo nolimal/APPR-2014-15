@@ -2,15 +2,15 @@
 
 # Funkcija, ki uvozi podatke iz datoteke geotimesexiscedvecmanj-csv.csv
 uvoziPodatki1 <- function() {
-  return(read.table("geotimesexiscedvecmanj-csv.csv",
+  return(read.csv2("geotimesexiscedvecmanj-csv.csv",
                     header = FALSE, sep = ";", as.is = TRUE,
-                    col.names = c("Država", "Spol", paste("Vse ISCED ravni", 2008:2013), "Primerjava", paste("Ravni 0-2", 2008:2013),"Primerjava",paste("Ravni 3-4", 2008:2013),"Primerjava",paste0("Ravni 5-8", 2008:2013),"Primerjava"),
-                    na.strings = "NA", skip = 8, fileEncoding = "Windows-1250"))
+                    col.names = c("Država", "Spol", paste("Skupno", 2008:2013), "Primerjava 1", paste("Ravni 0-2", 2008:2013),"Primerjava 2",paste("Ravni 3-4", 2008:2013),"Primerjava 3",paste0("Ravni 5-8", 2008:2013),"Primerjava 4"),
+                    na.strings = "NA", skip = 10, fileEncoding = "Windows-1250"))
 }
 
-# Zapišimo podatke v razpredelnico Podatki1.
+# Zapišimo podatke v razpredelnico ZaposlenostEU.
 cat("Uvažam podatke o zaposlenosti...\n")
-Podatki1 <- uvoziPodatki1()
+ZaposlenostEU <- uvoziPodatki1()
 
 # Če bi imeli več funkcij za uvoz in nekaterih npr. še ne bi
 # potrebovali v 3. fazi, bi bilo smiselno funkcije dati v svojo

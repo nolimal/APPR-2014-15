@@ -6,3 +6,6 @@
 
 14.11.2014 vnesel sem povezave do tabel v mapi podatki
 
+26.11.2014  vnesel sem program za uvoz podatkov CSV za zaposlenost v EU in sicer ZaposlenostEU
+
+27.11.2014  vnesel sem funkcijo, ki mi prebere podatke (po spremenljivkah)in izračuna povprečje
