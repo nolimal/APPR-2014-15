@@ -14,7 +14,7 @@ cat("Uvažam podatke o zaposlenosti v EU...razpredelnica ZaposlenostEU\n")
 ZaposlenostEU <- uvoziPodatki1()
 
 #Zapišimo podatke o povprečni vrednosti za razpredelnico ZaposlenostEU v matriko.
-cat("Povprečne vrednosti za stolpce... matrike povprečij(.ra in .rb in .rc. in rd)\n")
+cat("Povprečne vrednosti za stolpce... matrika povprečij(povprecje)\n")
 stolpci.ra<-substr(names(ZaposlenostEU),1,2)=="Sk"
 stolpci.rb<-substr(names(ZaposlenostEU),1,10)=="Ravni.0.2."
 stolpci.rc<-substr(names(ZaposlenostEU),1,10)=="Ravni.3.4."
@@ -108,6 +108,8 @@ povprecje.rd13f<-mean(ZaposlenostEU[stolpci.rd][,6][seq(3,96,3)])
 povprecje.rd = matrix(c(povprecje.rd08t, povprecje.rd08m, povprecje.rd08f, povprecje.rd09t, povprecje.rd09m, povprecje.rd09f,povprecje.rd10t, povprecje.rd10m, povprecje.rd10f,povprecje.rd11t, povprecje.rd11m, povprecje.rd11f, povprecje.rd12t, povprecje.rd12m, povprecje.rd12f, povprecje.rd13t, povprecje.rd13m, povprecje.rd13f), nrow=3, ncol=6)
 dimnames(povprecje.rd) = list(c("oba spola", "moški","ženske"),c("2008", "2009", "2010","2011","2012","2013"))
 
+povprecje<-matrix(c(povprecje.ra,povprecje.rb,povprecje.rc,povprecje.rd), nrow=3)
+dimnames(povprecje) = list(c("oba spola", "moški","ženske"),c("a2008", "a2009", "a2010","a2011","a2012","a2013","b2008", "b2009", "b2010","b2011","b2012","b2013","c2008", "c2009", "c2010","c2011","c2012","c2013","d2008", "d2009", "d2010","d2011","d2012","d2013"))
 
 
 # Funkcija, ki uvozi podatke iz datoteke slocsv.csv
