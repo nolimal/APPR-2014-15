@@ -19,7 +19,8 @@ ZaposlenostEU$ZaposlenostEU[,24:29] <- as.numeric(ZaposlenostEU$ZaposlenostEU[,2
 ZaposlenostEU <- uvoziPodatki1()
 
 #Zapišimo podatke o povprečni vrednosti za razpredelnico ZaposlenostEU v matriko.
-cat("Povprečne vrednosti za stolpce... matrika povprečij povprecje\n")
+cat("Matrika povprečnih vrednosti za ZaposlenostEU...matrika povprecje\n")
+OK.vrsticeZaposlenostEU<-!apply(is.na(ZaposlenostEU), 1, any)
 stolpci.ra<-substr(names(ZaposlenostEU),1,2)=="Sk"
 stolpci.rb<-substr(names(ZaposlenostEU),1,10)=="Ravni.0.2."
 stolpci.rc<-substr(names(ZaposlenostEU),1,10)=="Ravni.3.4."
@@ -127,6 +128,6 @@ uvoziPodatki2<-function(){
 }
 # Zapišimo podatke v razpredelnico AktivniSLO.
 cat("Uvažam podatke o aktivnih v SLO...razpredelnica AktivniSLO\n")
-
+OK.vrsticeAktivniSLO<-!apply(is.na(AktivniSLO), 1, any)
 AktivniSLO <- uvoziPodatki2()
 AktivniSLO$AktivniSLO[1:54,4:15] <- as.numeric(ZaposlenostEU$ZaposlenostEU[1:54,4:15])
