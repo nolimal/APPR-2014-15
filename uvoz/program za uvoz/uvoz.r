@@ -129,4 +129,4 @@ uvoziPodatki2<-function(){
 cat("Uvažam podatke o aktivnih v SLO...razpredelnica AktivniSLO\n")
 
 AktivniSLO <- uvoziPodatki2()
-AktivniSLO$AktivniSLO[,4:15] <- as.numeric(ZaposlenostEU$ZaposlenostEU[,4:15])
+AktivniSLO$AktivniSLO[1:54,4:15] <- as.numeric(ZaposlenostEU$ZaposlenostEU[1:54,4:15])
