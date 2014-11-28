@@ -11,7 +11,7 @@ uvoziPodatki1 <- function() {
 }
 
 # Zapišimo podatke v razpredelnico ZaposlenostEU.
-cat("Uvažam podatke o zaposlenosti v EU...razpredelnica ZaposlenostEU\n")
+cat("Uvažam podatke o zaposlenosti v EU...razpredelnica ZaposlenostEU\n\n")
 ZaposlenostEU$ZaposlenostEU[,3:8] <- as.numeric(ZaposlenostEU$ZaposlenostEU[,3:8])
 ZaposlenostEU$ZaposlenostEU[,10:15] <- as.numeric(ZaposlenostEU$ZaposlenostEU[,10:15])
 ZaposlenostEU$ZaposlenostEU[,17:22] <- as.numeric(ZaposlenostEU$ZaposlenostEU[,17:22])
@@ -19,7 +19,7 @@ ZaposlenostEU$ZaposlenostEU[,24:29] <- as.numeric(ZaposlenostEU$ZaposlenostEU[,2
 ZaposlenostEU <- uvoziPodatki1()
 
 #Zapišimo podatke o povprečni vrednosti za razpredelnico ZaposlenostEU v matriko.
-cat("Matrika povprečnih vrednosti za ZaposlenostEU...matrika povprecje\n")
+cat("Matrika povprečnih vrednosti za ZaposlenostEU...matrika povprecje\n\n")
 OK.vrsticeZaposlenostEU<-!apply(is.na(ZaposlenostEU), 1, any)
 stolpci.ra<-substr(names(ZaposlenostEU),1,2)=="Sk"
 stolpci.rb<-substr(names(ZaposlenostEU),1,10)=="Ravni.0.2."
@@ -127,7 +127,23 @@ uvoziPodatki2<-function(){
                    na.strings = "N", skip = 3, fileEncoding = "Windows-1250"))
 }
 # Zapišimo podatke v razpredelnico AktivniSLO.
-cat("Uvažam podatke o aktivnih v SLO...razpredelnica AktivniSLO\n")
+cat("Uvažam podatke o aktivnih v SLO...razpredelnica AktivniSLO\n\n")
+
 OK.vrsticeAktivniSLO<-!apply(is.na(AktivniSLO), 1, any)
+
+
 AktivniSLO <- uvoziPodatki2()
 AktivniSLO$AktivniSLO[1:54,4:15] <- as.numeric(ZaposlenostEU$ZaposlenostEU[1:54,4:15])
+
+# Dodajanje urejenostne spremenljivke v tabelo AktivniSLO.
+cat("Dodam podatke o urejenostni spremenljivki Primerjava08.13...razpredelnica AktivniSLO\n\n")
+
+urejenostna1<-rep("manj",length(AktivniSLO[,4]))
+urejenostna1[AktivniSLO[,4]<AktivniSLO[,14]]<-"več"
+primerjavaaktivni08in13<-factor(urejenostna1,levels=c("manj","več"),ordered=TRUE)
+AktivniSLO["Primerjava.08.13"] <- primerjavaaktivni08in13
+
+urejenostna2<-rep("manj",length(AktivniSLO[,4]))
+urejenostna2[AktivniSLO[,5]<AktivniSLO[,15]]<-"več"
+primerjavadeležaaaktivni08in13<-factor(urejenostna2,levels=c("manj","več"),ordered=TRUE)
+AktivniSLO["Primerjava.deleža.08.13"] <- primerjavadeležaaaktivni08in13
