@@ -3,6 +3,7 @@
 # Funkcija, ki uvozi podatke iz datoteke geotimesexiscedvecmanj-csv.csv
 uvoziPodatki1 <- function() {
   setwd("C:/Users/matevž/FMF/drugi letnik/APPR-2014-15/uvoz/program za uvoz")
+  
   return(read.csv2("geotimesexiscedvecmanj-csv.csv",
                     header = FALSE, sep = ";", as.is = TRUE,
                     col.names = c("Država", "Spol", paste("Skupno", 2008:2013), "Primerjava 1", paste("Ravni 0-2", 2008:2013),"Primerjava 2",paste("Ravni 3-4", 2008:2013),"Primerjava 3",paste0("Ravni 5-8", 2008:2013),"Primerjava 4"),
@@ -11,10 +12,14 @@ uvoziPodatki1 <- function() {
 
 # Zapišimo podatke v razpredelnico ZaposlenostEU.
 cat("Uvažam podatke o zaposlenosti v EU...razpredelnica ZaposlenostEU\n")
+ZaposlenostEU$ZaposlenostEU[,3:8] <- as.numeric(ZaposlenostEU$ZaposlenostEU[,3:8])
+ZaposlenostEU$ZaposlenostEU[,10:15] <- as.numeric(ZaposlenostEU$ZaposlenostEU[,10:15])
+ZaposlenostEU$ZaposlenostEU[,17:22] <- as.numeric(ZaposlenostEU$ZaposlenostEU[,17:22])
+ZaposlenostEU$ZaposlenostEU[,24:29] <- as.numeric(ZaposlenostEU$ZaposlenostEU[,24:29])
 ZaposlenostEU <- uvoziPodatki1()
 
 #Zapišimo podatke o povprečni vrednosti za razpredelnico ZaposlenostEU v matriko.
-cat("Povprečne vrednosti za stolpce... matrika povprečij(povprecje)\n")
+cat("Povprečne vrednosti za stolpce... matrika povprečij povprecje\n")
 stolpci.ra<-substr(names(ZaposlenostEU),1,2)=="Sk"
 stolpci.rb<-substr(names(ZaposlenostEU),1,10)=="Ravni.0.2."
 stolpci.rc<-substr(names(ZaposlenostEU),1,10)=="Ravni.3.4."
@@ -118,8 +123,10 @@ uvoziPodatki2<-function(){
   return(read.csv2("slocsv.csv",
                    header = FALSE, sep = ";", as.is = TRUE,
                    col.names = c("Regija", "Spol", "Raven izobrazbe", "Aktivni 08", "Delež aktivnih 08", "Aktivni 09", "Delež aktivnih 09", "Aktivni 10", "Delež aktivnih 10", "Aktivni 11", "Delež aktivnih 11", "Aktivni 12", "Delež aktivnih 12", "Aktivni 13", "Delež aktivnih 13"),
-                   na.strings = "-", skip = 3, fileEncoding = "Windows-1250"))
+                   na.strings = "N", skip = 3, fileEncoding = "Windows-1250"))
 }
 # Zapišimo podatke v razpredelnico AktivniSLO.
 cat("Uvažam podatke o aktivnih v SLO...razpredelnica AktivniSLO\n")
+
 AktivniSLO <- uvoziPodatki2()
+AktivniSLO$AktivniSLO[,4:15] <- as.numeric(ZaposlenostEU$ZaposlenostEU[,4:15])
