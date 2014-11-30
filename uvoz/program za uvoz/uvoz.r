@@ -152,7 +152,7 @@ primerjavadeležaaaktivni08in13<-factor(urejenostna2,levels=c("manj","več"),ord
 AktivniSLO["Primerjava.deleža.08.13"] <- primerjavadeležaaaktivni08in13
 
 # Funkcija, ki uvozi podatke iz spletne strani
-#Ker imamo <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> potem nam ni potrebno podati parametra encoding
+# Ker imamo <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> potem nam ni potrebno podati parametra encoding
 library(XML)
 uvoziPodatki3<-function(){
   naslov = "http://www.stat.si/novica_prikazi.aspx?id=6508"
@@ -162,3 +162,7 @@ uvoziPodatki3<-function(){
 cat("Uvažam podatke o aktivnih v SLO po regijah...razpredelnica AktivniSLO1\n\n")
 
 AktivniSLO1 <- uvoziPodatki3()
+# Obdelava podatkov iz spletne strani, torej podatki v tabelah
+naslov = "http://www.stat.si/novica_prikazi.aspx?id=6508"
+doc <- htmlTreeParse(naslov, encoding = "UTF-8", useInternal = TRUE)
+r <- xmlRoot(doc)
