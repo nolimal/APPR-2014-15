@@ -9,3 +9,7 @@
 26.11.2014  vnesel sem program za uvoz podatkov CSV za zaposlenost v EU in sicer ZaposlenostEU
 
 27.11.2014  vnesel sem funkcijo, ki mi prebere podatke (po spremenljivkah)in izračuna povprečje
+
+28.11.2014  vnesel sem funkcijo, ki mi uvozi podatke CSV za AktivniSLO in urejenostno spremenljivk, ki primerja deleže in število aktivnih
+
+30.11.2014  vnesel sem funkcijo, ki mi uovzi podatke v obliki XML za AktivniSLO1
