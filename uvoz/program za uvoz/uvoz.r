@@ -161,8 +161,13 @@ uvoziPodatki3<-function(){
 # Zapišimo podatke v razpredelnico .
 cat("Uvažam podatke o aktivnih v SLO po regijah...razpredelnica AktivniSLO1\n\n")
 
-AktivniSLO1 <- uvoziPodatki3()
+Spletnastran <- uvoziPodatki3()
 # Obdelava podatkov iz spletne strani, torej podatki v tabelah
 naslov = "http://www.stat.si/novica_prikazi.aspx?id=6508"
 doc <- htmlTreeParse(naslov, encoding = "UTF-8", useInternal = TRUE)
 r <- xmlRoot(doc)
+tabelaxml1<-readHTMLTable(naslov,which=23)
+names(tabelaxml1)<-c("Poklicne skupine","Skupaj","Moški","Ženske","Razmerje Ž/M")
+#preverixml1<-str(tabelaxml1)
+tabelaxml2<-readHTMLTable(naslov,which=27)
+#preverixml2<-str(tabelaxml2)
