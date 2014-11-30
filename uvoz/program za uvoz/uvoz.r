@@ -148,8 +148,8 @@ AktivniSLO["Primerjava.08.13"] <- primerjavaaktivni08in13
 
 urejenostna2<-rep("manj",length(AktivniSLO[,4]))
 urejenostna2[AktivniSLO[,5]<AktivniSLO[,15]]<-"več"
-primerjavadeležaaaktivni08in13<-factor(urejenostna2,levels=c("manj","več"),ordered=TRUE)
-AktivniSLO["Primerjava.deleža.08.13"] <- primerjavadeležaaaktivni08in13
+primerjavadeležaaktivni08in13<-factor(urejenostna2,levels=c("manj","več"),ordered=TRUE)
+AktivniSLO["Primerjava.deleža.08.13"] <- primerjavadeležaaktivni08in13
 
 # Funkcija, ki uvozi podatke iz spletne strani
 # Ker imamo <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> potem nam ni potrebno podati parametra encoding
@@ -169,8 +169,22 @@ r <- xmlRoot(doc)
 tabelaxml1<-readHTMLTable(naslov,which=23)
 tabelaxml1<-tabelaxml1[2:12,]
 names(tabelaxml1)<-c("Poklicne skupine","Skupaj","Moški","Ženske","Razmerje Ž/M")
+tabelaxml1$Skupaj<-gsub("[.]", "", tabelaxml1$Skupaj, ignore.case=TRUE)
+tabelaxml1$Moški<-gsub("[.]", "", tabelaxml1$Moški, ignore.case=TRUE)
+tabelaxml1$Ženske<-gsub("[.]", "", tabelaxml1$Ženske, ignore.case=TRUE)
+
+tabelaxml1$Skupaj<-as.numeric(tabelaxml1$Skupaj)
+tabelaxml1$Moški<-as.numeric(tabelaxml1$Moški)
+tabelaxml1$Ženske<-as.numeric(tabelaxml1$Ženske)
+
 #preverixml1<-str(tabelaxml1)
+
+
 tabelaxml2<-readHTMLTable(naslov,which=27)
 tabelaxml2<-tabelaxml2[2:6,]
-names(tabelaxml2)<-c("Sektorji","Skupaj","Osnovnošolska izobrazba ali manj","Srednješolska izobrazba","Višješolska in visokošolska izobrazba")
+names(tabelaxml2)<-c("Sektorji","Skupaj","Osnovnošolska izobrazba ali manj","Srednješolska izobrazba","Visoka, višja izobrazba")
+
+tabelaxml2$Skupaj<-gsub("[.]", "", tabelaxml2$Skupaj, ignore.case=TRUE)
+tabelaxml2$Skupaj<-as.numeric(tabelaxml2$Skupaj)
+
 #preverixml2<-str(tabelaxml2)
