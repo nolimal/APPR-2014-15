@@ -167,7 +167,10 @@ naslov = "http://www.stat.si/novica_prikazi.aspx?id=6508"
 doc <- htmlTreeParse(naslov, encoding = "UTF-8", useInternal = TRUE)
 r <- xmlRoot(doc)
 tabelaxml1<-readHTMLTable(naslov,which=23)
+tabelaxml1<-tabelaxml1[2:12,]
 names(tabelaxml1)<-c("Poklicne skupine","Skupaj","Moški","Ženske","Razmerje Ž/M")
 #preverixml1<-str(tabelaxml1)
 tabelaxml2<-readHTMLTable(naslov,which=27)
+tabelaxml2<-tabelaxml2[2:6,]
+names(tabelaxml2)<-c("Sektorji","Skupaj","Osnovnošolska izobrazba ali manj","Srednješolska izobrazba","Višješolska in visokošolska izobrazba")
 #preverixml2<-str(tabelaxml2)
