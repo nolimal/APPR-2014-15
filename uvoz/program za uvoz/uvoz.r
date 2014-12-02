@@ -2,10 +2,8 @@
 
 # Funkcija, ki uvozi podatke iz datoteke geotimesexiscedvecmanj-csv.csv
 uvoziPodatki1 <- function() {
-  setwd("C:/Users/matevž/FMF/drugi letnik/APPR-2014-15/uvoz/program za uvoz")
-  d<-dir()
-  z <- grep("\\.csv$", d)
-  return(read.csv2("geotimesexiscedvecmanj-csv.csv",
+
+  return(read.csv2("podatki/geotimesexiscedvecmanj-csv.csv",
                     header = FALSE, sep = ";", as.is = TRUE,
                     col.names = c("Država", "Spol", paste("Skupno", 2008:2013), "Primerjava 1", paste("Ravni 0-2", 2008:2013),"Primerjava 2",paste("Ravni 3-4", 2008:2013),"Primerjava 3",paste0("Ravni 5-8", 2008:2013),"Primerjava 4"),
                     na.strings = "NA", skip = 10, fileEncoding = "Windows-1250"))
@@ -13,11 +11,12 @@ uvoziPodatki1 <- function() {
 
 # Zapišimo podatke v razpredelnico ZaposlenostEU.
 cat("Uvažam podatke o zaposlenosti v EU...razpredelnica ZaposlenostEU\n\n")
+ZaposlenostEU <- uvoziPodatki1()
 ZaposlenostEU$ZaposlenostEU[,3:8] <- as.numeric(ZaposlenostEU$ZaposlenostEU[,3:8])
 ZaposlenostEU$ZaposlenostEU[,10:15] <- as.numeric(ZaposlenostEU$ZaposlenostEU[,10:15])
 ZaposlenostEU$ZaposlenostEU[,17:22] <- as.numeric(ZaposlenostEU$ZaposlenostEU[,17:22])
 ZaposlenostEU$ZaposlenostEU[,24:29] <- as.numeric(ZaposlenostEU$ZaposlenostEU[,24:29])
-ZaposlenostEU <- uvoziPodatki1()
+
 
 #Zapišimo podatke o povprečni vrednosti za razpredelnico ZaposlenostEU v matriko.
 cat("Matrika povprečnih vrednosti za ZaposlenostEU...matrika povprecje\n\n")
@@ -118,24 +117,23 @@ dimnames(povprecje.rd) = list(c("oba spola", "moški","ženske"),c("2008", "2009
 povprecje<-matrix(c(povprecje.ra,povprecje.rb,povprecje.rc,povprecje.rd), nrow=3)
 dimnames(povprecje) = list(c("oba spola", "moški","ženske"),c("a2008", "a2009", "a2010","a2011","a2012","a2013","b2008", "b2009", "b2010","b2011","b2012","b2013","c2008", "c2009", "c2010","c2011","c2012","c2013","d2008", "d2009", "d2010","d2011","d2012","d2013"))
 
-
+View(ZaposlenostEU)
+View(povprecje)
 # Funkcija, ki uvozi podatke iz datoteke slocsv.csv
 uvoziPodatki2<-function(){
-  setwd("C:/Users/matevž/FMF/drugi letnik/APPR-2014-15/uvoz/program za uvoz")
-  d<-dir()
-  z <- grep("\\.csv$", d)
-  return(read.csv2("slocsv.csv",
+
+  return(read.csv2("podatki/slocsv.csv",
                    header = FALSE, sep = ";", as.is = TRUE,
                    col.names = c("Regija", "Spol", "Raven izobrazbe", "Aktivni 08", "Delež aktivnih 08", "Aktivni 09", "Delež aktivnih 09", "Aktivni 10", "Delež aktivnih 10", "Aktivni 11", "Delež aktivnih 11", "Aktivni 12", "Delež aktivnih 12", "Aktivni 13", "Delež aktivnih 13"),
                    na.strings = "N", skip = 3, fileEncoding = "Windows-1250"))
 }
 # Zapišimo podatke v razpredelnico AktivniSLO.
 cat("Uvažam podatke o aktivnih v SLO...razpredelnica AktivniSLO\n\n")
-
+AktivniSLO <- uvoziPodatki2()
 OK.vrsticeAktivniSLO<-!apply(is.na(AktivniSLO), 1, any)
 
 
-AktivniSLO <- uvoziPodatki2()
+
 AktivniSLO$AktivniSLO[1:54,4:15] <- as.numeric(ZaposlenostEU$ZaposlenostEU[1:54,4:15])
 
 # Dodajanje urejenostne spremenljivke v tabelo AktivniSLO.
@@ -150,6 +148,8 @@ urejenostna2<-rep("manj",length(AktivniSLO[,4]))
 urejenostna2[AktivniSLO[,5]<AktivniSLO[,15]]<-"več"
 primerjavadeležaaktivni08in13<-factor(urejenostna2,levels=c("manj","več"),ordered=TRUE)
 AktivniSLO["Primerjava.deleža.08.13"] <- primerjavadeležaaktivni08in13
+
+View(AktivniSLO)
 
 # Funkcija, ki uvozi podatke iz spletne strani
 # Ker imamo <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> potem nam ni potrebno podati parametra encoding
@@ -169,6 +169,8 @@ r <- xmlRoot(doc)
 tabelaxml1<-readHTMLTable(naslov,which=23)
 tabelaxml1<-tabelaxml1[2:12,]
 names(tabelaxml1)<-c("Poklicne skupine","Skupaj","Moški","Ženske","Razmerje Ž/M")
+
+
 tabelaxml1$Skupaj<-gsub("[.]", "", tabelaxml1$Skupaj, ignore.case=TRUE)
 tabelaxml1$Moški<-gsub("[.]", "", tabelaxml1$Moški, ignore.case=TRUE)
 tabelaxml1$Ženske<-gsub("[.]", "", tabelaxml1$Ženske, ignore.case=TRUE)
@@ -177,14 +179,18 @@ tabelaxml1$Skupaj<-as.numeric(tabelaxml1$Skupaj)
 tabelaxml1$Moški<-as.numeric(tabelaxml1$Moški)
 tabelaxml1$Ženske<-as.numeric(tabelaxml1$Ženske)
 
+View(tabelaxml1)
+
 #preverixml1<-str(tabelaxml1)
 
 
 tabelaxml2<-readHTMLTable(naslov,which=27)
 tabelaxml2<-tabelaxml2[2:6,]
 names(tabelaxml2)<-c("Sektorji","Skupaj","Osnovnošolska izobrazba ali manj","Srednješolska izobrazba","Visoka, višja izobrazba")
+rownames(tabelaxml2) <-tabelaxml2$Sektorji
+tabelaxml2<-tabelaxml2[-1]
 
-tabelaxml2$Skupaj<-gsub("[.]", "", tabelaxml2$Skupaj, ignore.case=TRUE)
-tabelaxml2$Skupaj<-as.numeric(tabelaxml2$Skupaj)
+tabelaxml2[,1:4]<-apply(tabelaxml2[,1:4], 2, function(x) as.numeric(gsub("[.]", "", x)))
 
+View(tabelaxml2)
 #preverixml2<-str(tabelaxml2)
