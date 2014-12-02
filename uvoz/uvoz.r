@@ -152,6 +152,7 @@ AktivniSLO["Primerjava.deleža.08.13"] <- primerjavadeležaaktivni08in13
 View(AktivniSLO)
 
 # Funkcija, ki uvozi podatke iz spletne strani
+
 # Ker imamo <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> potem nam ni potrebno podati parametra encoding
 library(XML)
 uvoziPodatki3<-function(){
@@ -178,6 +179,8 @@ tabelaxml1$Ženske<-gsub("[.]", "", tabelaxml1$Ženske, ignore.case=TRUE)
 tabelaxml1$Skupaj<-as.numeric(tabelaxml1$Skupaj)
 tabelaxml1$Moški<-as.numeric(tabelaxml1$Moški)
 tabelaxml1$Ženske<-as.numeric(tabelaxml1$Ženske)
+
+rownames(tabelaxml1)<-NULL
 
 View(tabelaxml1)
 
