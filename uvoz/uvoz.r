@@ -1,5 +1,5 @@
 # 2. faza: Uvoz podatkov
-
+ 
 # Funkcija, ki uvozi podatke iz datoteke geotimesexiscedvecmanj-csv.csv
 uvoziPodatki1 <- function() {
   
