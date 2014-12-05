@@ -116,8 +116,8 @@ dimnames(povprecje.rd) = list(c("oba spola", "moški","ženske"),c("2008", "2009
 povprecje<-matrix(c(povprecje.ra,povprecje.rb,povprecje.rc,povprecje.rd), nrow=3)
 dimnames(povprecje) = list(c("oba spola", "moški","ženske"),c("a2008", "a2009", "a2010","a2011","a2012","a2013","b2008", "b2009", "b2010","b2011","b2012","b2013","c2008", "c2009", "c2010","c2011","c2012","c2013","d2008", "d2009", "d2010","d2011","d2012","d2013"))
 
-View(ZaposlenostEU)
-View(povprecje)
+#View(ZaposlenostEU)
+#View(povprecje)
 # Funkcija, ki uvozi podatke iz datoteke slocsv.csv
 uvoziPodatki2<-function(){
   return(read.csv2("podatki/slocsv.csv",
@@ -154,7 +154,7 @@ AktivniSLO$Spol <- rep(c(rep("Skupaj", 6),
                          rep("Moški", 6),
                          rep("Ženske", 6)), 3)
 
-View(AktivniSLO)
+#View(AktivniSLO)
 
 # Funkcija, ki uvozi podatke iz spletne strani
 
@@ -189,7 +189,7 @@ tabelaxml1$Ženske<-as.numeric(tabelaxml1$Ženske)
 
 rownames(tabelaxml1)<-NULL
 
-View(tabelaxml1)
+#View(tabelaxml1)
 
 #preverixml1<-str(tabelaxml1)
 
@@ -202,5 +202,5 @@ tabelaxml2<-tabelaxml2[-1]
 
 tabelaxml2[,1:4]<-apply(tabelaxml2[,1:4], 2, function(x) as.numeric(gsub("[.]", "", x)))
 
-View(tabelaxml2)
+#View(tabelaxml2)
 #preverixml2<-str(tabelaxml2)
