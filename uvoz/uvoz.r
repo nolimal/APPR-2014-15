@@ -1,5 +1,5 @@
 # 2. faza: Uvoz podatkov
- 
+
 # Funkcija, ki uvozi podatke iz datoteke geotimesexiscedvecmanj-csv.csv
 uvoziPodatki1 <- function() {
   return(read.csv2("podatki/geotimesexiscedvecmanj-csv.csv",
@@ -147,6 +147,13 @@ urejenostna2[AktivniSLO[,5]<AktivniSLO[,15]]<-"več"
 primerjavadeležaaktivni08in13<-factor(urejenostna2,levels=c("manj","več"),ordered=TRUE)
 AktivniSLO["Primerjava.deleža.08.13"] <- primerjavadeležaaktivni08in13
 
+AktivniSLO$Regija <- c(rep("Slovenija", 18),
+                       rep("Vzhodna Slovenija", 18),
+                       rep("Zahodna Slovenija", 18))
+AktivniSLO$Spol <- rep(c(rep("Skupaj", 6),
+                         rep("Moški", 6),
+                         rep("Ženske", 6)), 3)
+
 View(AktivniSLO)
 
 # Funkcija, ki uvozi podatke iz spletne strani
@@ -173,6 +180,8 @@ names(tabelaxml1)<-c("Poklicne skupine","Skupaj","Moški","Ženske","Razmerje Ž
 tabelaxml1$Skupaj<-gsub("[.]", "", tabelaxml1$Skupaj, ignore.case=TRUE)
 tabelaxml1$Moški<-gsub("[.]", "", tabelaxml1$Moški, ignore.case=TRUE)
 tabelaxml1$Ženske<-gsub("[.]", "", tabelaxml1$Ženske, ignore.case=TRUE)
+tabelaxml1$"Razmerje Ž/M"<-gsub(",", ".", tabelaxml1$"Razmerje Ž/M",)
+tabelaxml1$"Razmerje Ž/M"<-as.numeric(tabelaxml1$"Razmerje Ž/M")
 
 tabelaxml1$Skupaj<-as.numeric(tabelaxml1$Skupaj)
 tabelaxml1$Moški<-as.numeric(tabelaxml1$Moški)
