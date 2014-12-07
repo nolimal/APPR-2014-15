@@ -13,3 +13,13 @@
 28.11.2014  vnesel sem funkcijo, ki mi uvozi podatke CSV za AktivniSLO in urejenostno spremenljivk, ki primerja deleže in število aktivnih
 
 30.11.2014  vnesel sem funkcijo, ki mi uovzi podatke v obliki XML za AktivniSLO1
+
+1.12.2014 sem se ukvarjal s tipi spremenljivk v uvoženih XML datotekah
+
+2.12.2014 sem na vajah bolj optimalno spremenil tipe spremenljivk v tabelaxml1 in tabelaxml2
+
+3.12.2014 sem naredil grafe iz podatkov z uvoza
+
+4.12.2014 sem Commit-al vse potrebno z grafi na repozitorij in dodal graf Plot
+
+5.12.2014 sem spremenil da sem zakomentiral View-e in dodal več datotek PDF z grafi, ker prej je bilo vse združeno v eno.
