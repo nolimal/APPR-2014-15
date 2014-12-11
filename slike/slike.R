@@ -119,7 +119,7 @@ barplot(tabelaxml2$Skupaj,beside = TRUE,
 
 abline(h = seq(0,2000,250), col = "black", lty = "dotted")
 
-legend("topright", rownames(tabelaxml2), fill = rainbow(5), cex=.60, pch=1, title="LEGENDA",bg = "white")
+legend("topright", rownames(tabelaxml2), fill = rainbow(5), cex=.80, pch=1, title="LEGENDA",bg = "white")
 text(7,50,"Vir: SURS")
 
 dev.off()
