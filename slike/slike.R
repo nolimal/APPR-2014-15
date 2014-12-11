@@ -62,7 +62,7 @@ g_range <- range(0, Skupaj, Brez_izobrazbe,
 # Graph Skupaj using y axis that ranges from 0 to max 
 # value in vectors.  Turn off axes and 
 # annotations (axis labels) so we can specify them ourself
-plot(Skupaj, type="o", col=rainbow(1), ylim=g_range, 
+plot(Skupaj, type="o",pch=0, col=rainbow(1), ylim=g_range, 
      axes=FALSE, ann=FALSE)
 
 # Make x axis using 2008-2013 labels
@@ -76,12 +76,12 @@ axis(2, las=1, at=250*0:g_range[2])
 box()
 
 # Graph Brez_izobrazbe with dashed line and square points
-lines(Brez_izobrazbe, type="o", pch=22, lty=2, col="#FFDB00FF")
-lines(Nepopolna_osnovnosolska, type="o", pch=23, lty=3, col="#49FF00FF")
-lines(Osnovnosolska, type="o", pch=24, lty=2, col="#00FF92FF")
-lines(Nizja_ali_srednja_poklicna, type="o", pch=25, lty=4, col="#0092FFFF")
-lines(Srednja_strokovna_splosna, type="o", pch=26, lty=5, col="#4900FFFF")
-lines(Visjesolska_visokosolska, type="o", pch=27, lty=6, col="#FF00DBFF")
+lines(Brez_izobrazbe, type="o", pch=1, lty=2, col="#FFDB00FF")
+lines(Nepopolna_osnovnosolska, type="o", pch=2, lty=3, col="#49FF00FF")
+lines(Osnovnosolska, type="o", pch=3, lty=2, col="#00FF92FF")
+lines(Nizja_ali_srednja_poklicna, type="o", pch=4, lty=4, col="#0092FFFF")
+lines(Srednja_strokovna_splosna, type="o", pch=5, lty=5, col="#4900FFFF")
+lines(Visjesolska_visokosolska, type="o", pch=6, lty=6, col="#FF00DBFF")
 
 # Create a title with a red, bold/italic font
 title(main="Aktivnost v Sloveniji", col.main="black", font.main=4)
@@ -96,7 +96,7 @@ title(ylab="Aktivnost (v 1000)", col="black")
 legend("right", c("Skupaj", "Brez_izobrazbe","Nepopolna_osnovnošolska", "Osnovnosolska", 
                      "Nižja_ali_srednja_poklicna", "Srednja_strokovna_splošna",
                      "Višješolska_visokošolska"), cex=0.8, 
-       col=rainbow(7), pch=21:27, lty=1:6)
+       col=rainbow(7), pch=0:6, lty=1:6)
 
 #shranimo v mapo APPR-2014-15
 dev.off()
@@ -182,7 +182,7 @@ g_range <- range(0, Skupaj, Brez_izobrazbe,
 # Graph Skupaj using y axis that ranges from 0 to max 
 # value in vectors.  Turn off axes and 
 # annotations (axis labels) so we can specify them ourself
-plot(Skupaj, type="o", col=rainbow(1), ylim=g_range, 
+plot(Skupaj, type="o",pch=0, col=rainbow(1), ylim=g_range, 
      axes=FALSE, ann=FALSE)
 
 # Make x axis using 2008-2013 labels
@@ -196,12 +196,12 @@ axis(2, las=1, at=250*0:g_range[2])
 box()
 
 # Graph Brez_izobrazbe with dashed line and square points
-lines(Brez_izobrazbe, type="o", pch=22, lty=2, col="#FFDB00FF")
-lines(Nepopolna_osnovnosolska, type="o", pch=23, lty=3, col="#49FF00FF")
-lines(Osnovnosolska, type="o", pch=24, lty=2, col="#00FF92FF")
-lines(Nizja_ali_srednja_poklicna, type="o", pch=25, lty=4, col="#0092FFFF")
-lines(Srednja_strokovna_splosna, type="o", pch=26, lty=5, col="#4900FFFF")
-lines(Visjesolska_visokosolska, type="o", pch=27, lty=6, col="#FF00DBFF")
+lines(Brez_izobrazbe, type="o", pch=1, lty=2, col="#FFDB00FF")
+lines(Nepopolna_osnovnosolska, type="o", pch=2, lty=3, col="#49FF00FF")
+lines(Osnovnosolska, type="o", pch=3, lty=2, col="#00FF92FF")
+lines(Nizja_ali_srednja_poklicna, type="o", pch=4, lty=4, col="#0092FFFF")
+lines(Srednja_strokovna_splosna, type="o", pch=5, lty=5, col="#4900FFFF")
+lines(Visjesolska_visokosolska, type="o", pch=6, lty=6, col="#FF00DBFF")
 
 # Create a title with a red, bold/italic font
 title(main="Aktivnost v Sloveniji", col.main="black", font.main=4)
@@ -214,7 +214,7 @@ title(ylab="Aktivnost (v 1000)", col="black")
 # (cex) and uses the same line colors and points used by 
 # the actual plots 
 legend("right", c("Skupaj", "Brez_izobrazbe","Nepopolna_osnovnošolska", "Osnovnosolska", 
-                        "Nižja_ali_srednja_poklicna", "Srednja_strokovna_splošna",
-                        "Višješolska_visokošolska"), cex=0.8, 
-       col=rainbow(7), pch=21:27, lty=1:6)
+                  "Nižja_ali_srednja_poklicna", "Srednja_strokovna_splošna",
+                  "Višješolska_visokošolska"), cex=0.8, 
+       col=rainbow(7), pch=0:6, lty=1:6)
 dev.off()
