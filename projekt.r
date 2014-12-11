@@ -1,10 +1,11 @@
-# # 2. faza: Obdelava, uvoz in čiščenje podatkov
-# source("uvoz/uvoz.r")
-# 
-# # 3. faza: Analiza in vizualizacija podatkov
+# 2. faza: Obdelava, uvoz in čiščenje podatkov
+source("uvoz/uvoz.r", encoding="UTF-8")
+source("slike/slike.r", encoding="UTF-8")
+
+# #3. faza: Analiza in vizualizacija podatkov
 # source("vizualizacija/vizualizacija.r")
-# 
-# # 4. faza: Napredna analiza podatkov
+
+# 4. faza: Napredna analiza podatkov
 # source("analiza/analiza.r")
-# 
-# cat("Končano.\n")
+ 
+cat("Končano.\n")
