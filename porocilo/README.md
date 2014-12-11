@@ -1,6 +1,6 @@
 # Poročilo
 
-12.11.2014 izbral Temo po predelavi podatkov na straneh Eurostat-a in SURS-a7, ter napisal poglavje tematika v README.md.
+12.11.2014 izbral Temo po predelavi podatkov na straneh Eurostat-a in SURS-a, ter napisal poglavje tematika v README.md.
 
 13.11.2014 v porocilo.tex napisal povezavi na tabele, ki sem si jih shranil v svoji mapi ter jih bom začel obdelovati
 
@@ -22,4 +22,6 @@
 
 4.12.2014 sem Commit-al vse potrebno z grafi na repozitorij in dodal graf Plot
 
-5.12.2014 sem spremenil da sem zakomentiral View-e in dodal več datotek PDF z grafi, ker prej je bilo vse združeno v eno.
+5.12.2014 sem spremenil, da sem zakomentiral View-e in dodal več datotek PDF z grafi, ker prej je bilo vse združeno v eno.
+
+11.12.2014 sem prejel vmesno oceno in se lotil popravljanja(popravil sem projekt.r in popravil sem eno legendo pri enem grafu)

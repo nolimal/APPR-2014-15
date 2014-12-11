@@ -1,7 +1,7 @@
 
 # Analiza podatkov s programom R, 2014/15
 
-Avtor: Nolimal Matevž, jaz
+Avtor: Nolimal Matevž
 
 Repozitorij z gradivi pri predmetu APPR v študijskem letu 2014/15.
 
@@ -11,7 +11,7 @@ Matevž Nolimal
 
 #Mentor
 
-Janoš Vidali
+dr. Janoš Vidali
 
 ## Razmere na trgu dela doma in v EU
 
@@ -27,6 +27,7 @@ Glavni program se nahaja v datoteki `projekt.r`. Ko ga poženemo, se izvedejo
 programi, ki ustrezajo drugi, tretji in četrti fazi projekta:
 
 * obdelava, uvoz in čiščenje podatkov: `uvoz/uvoz.r`
+* prebiranje on obdelava podatkov in narisanje grafov v PDF-datotekah: `slike/slike.r`
 * analiza in vizualizacija podatkov: `vizualizacija/vizualizacija.r`
 * napredna analiza podatkov: `analiza/analiza.r`
 
