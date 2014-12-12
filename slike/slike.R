@@ -20,9 +20,9 @@ pdf("slike/grafpoklici.pdf")
 
 op <- par(cex=.64)
 
-barplot(tabelaxml1$Skupaj,beside = TRUE,
-        main="Plače po poklicih", xlab="POKLICI",ylab="POVPREČNE PLAČE [€]",
+barplot(tabelaxml1$Skupaj,beside = TRUE, xlab="POKLICI",ylab="POVPREČNE PLAČE [€]",
         col=rainbow(11),ylim=c(0,3000),xlim=c(0,13))
+title(main="Plače po poklicih", col.main="black", font.main=4)
 
 abline(h = seq(0,3000,250), col = "black", lty = "dotted")
 
