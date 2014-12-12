@@ -7,10 +7,40 @@
 \pagestyle{plain}
 
 \begin{document}
-\title{Poročilo pri predmetu \\
-Analiza podatkov s programom R}
-\author{Matevž Nolimal}
-\maketitle{Razmere na trgu dela doma in v EU}
+
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\center
+
+\textsc{\LARGE Fakulteta za matematiko in fiziko}\\[1.5cm]
+\textsc{\Large Poročilo pri predmetu}\\[0.5cm]
+\textsc{\large Analiza podatkov s programom R}\\[0.5cm]
+\HRule \\[0.4cm]
+{ \huge \bfseries Razmere na trgu dela doma in v EU}\\[0.4cm] 
+\HRule \\[1.5cm]
+
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Avtor:}\\
+Matevž \textsc{Nolimal}
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Mentor:} \\
+Dr. Janoš \textsc{Vidali}
+\end{flushright}
+\end{minipage}\\[4cm]
+
+{\large \today}\\[3cm] 
+\vfill
+
+\end{titlepage}
+
 
 \section{Izbira teme}
 
@@ -22,21 +52,33 @@ Namen in cilj projekta je, da spoznam orodja analiziranja v programu R na konkre
 \pagebreak
 \section{Obdelava, uvoz in čiščenje podatkov}
 
-Po izbiri obravnavane teme sem se lotil zbiranja podatkov v mapi podatki iz strani \verb|Eurostat-a| in \verb|SURS-a|. Ko sem imel shranjene podatkev tabelah \verb|CSV| sem v podprogramu \verb|uvoz.r| uvozil podatke iz datotek vrste \verb|CSV| in datotek vrste \verb|XML|(potrebno je bilo dodatno naložiti tudi paket \verb|XML|). Ko sem jih vpeljal sem v vsako izmed teh tabel dodal po vsaj eno urejenostno spremenljivko(ta je ponavadi primerjala podatke po vrsticah in jih nato rangirala). Ker je bila uvožene tabela \verb|ZaposlenostEU| izredno velika in njeni podatko dokaj zahtevni za obdelavo sem si ustvaril pomožno matriko \verb|povprecje|, s katero sem si pomagal rangirati podatke po vrsticah in iz tega poračunati povprečje. Pri vsem tem delu sem veliko časa namenil tipom spremenljivk. Ob uvozi preko \verb|read.csv2| sem naletel na težave s tipom spremenljivk factor, ki sem jih nato spremenil bodisi v character bodisi v integer. Pri uvozu preko \verb|XML| paketa pa sem dobil rezultate v tipu double, ki sem jih spremenil v integer in kjer je bilo potrebno v character. Uvožene podatke sem shranil v tabelah \verb|tabelaxml1| in \verb|tabelaxml2|.
+Po izbiri obravnavane teme sem se lotil zbiranja podatkov v mapi podatki iz strani \verb|Eurostat-a| in \verb|SURS-a|. Ko sem imel shranjene podatkev tabelah \verb|CSV| sem v podprogramu \verb|uvoz.r| uvozil podatke iz datotek vrste \verb|CSV| in datotek vrste \verb|XML|(potrebno je bilo dodatno naložiti tudi paket \verb|XML|). Po uvozu sem v vsako izmed teh tabel dodal po vsaj eno urejenostno spremenljivko(ta je ponavadi primerjala podatke po vrsticah in jih nato rangirala). 
 
-Po zaključenem uvozu podatkov sem jih začel smiselno urejati in prikazati v grafih.Ustvarjanje grafov iz podatkov uvoza mi je vzelo veliko časa, saj sem zaradi kompleksnosti prikazanih podatkov potreboval veliko časa(predvsem se to nanaša na \verb|grafplot.pdf|). Po prejeti vmesni oceni sem se lotil še popravljanja potrebnih zadev(poročilo in glavnega programa \verb|projekt.r|, ki do tedaj ni imel nobenega pomena). Na naslednjih straneh se nahajajo omenjeni grafi.
+Ker je bila uvožene tabela \verb|ZaposlenostEU| izredno velika in njeni podatko dokaj zahtevni za obdelavo sem si ustvaril pomožno matriko \verb|povprecje|, s katero sem si pomagal rangirati podatke po vrsticah in iz tega poračunati povprečje (to bom uporabil v kasnejših fazah).
+
+Pri vsem tem delu sem veliko časa namenil tipom spremenljivk. Ob uvozi preko \verb|read.csv2| sem naletel na težave s tipom spremenljivk factor, ki sem jih nato spremenil bodisi v character bodisi v integer. Pri uvozu preko \verb|XML| paketa pa sem dobil rezultate v tipu double, ki sem jih spremenil v integer in kjer je bilo potrebno v character. Uvožene podatke sem shranil v tabelah \verb|tabelaxml1| in \verb|tabelaxml2|.
+
+Po zaključenem uvozu podatkov sem jih začel smiselno urejati in prikazati v grafih.Ustvarjanje grafov iz podatkov uvoza mi je vzelo veliko časa, saj sem zaradi kompleksnosti prikazanih podatkov potreboval veliko časa(pred\-vsem se to nanaša na \verb|grafplot.pdf|). Po prejeti vmesni oceni sem se lotil še popravljanja potrebnih zadev(poročilo in glavnega programa \verb|projekt.r|, ki do tedaj ni imel nobenega pomena). Na naslednjih straneh se nahajajo omenjeni grafi.
 
 \includegraphics[width=\textwidth]{../slike/grafplot.pdf}
 
-Zgornji graf - \verb|Grafplot.pdf| prikazuje število aktivnih v Sloveniji(v tisočih) glede na doseženo raven izobrazbe in ločeno po letih.
+Zgornji graf - \verb|grafplot.pdf| prikazuje število aktivnih v Sloveniji(v tisočih) glede na doseženo raven izobrazbe in ločeno po letih.
 
 \includegraphics[width=\textwidth]{../slike/grafpoklici.pdf}
+
+Zgornji graf - \verb|grafpoklici.pdf| prikazuje višino povprečne mesećne bruto plače odvisne od poklica za Slovenijo v letu 2013.
+
 \includegraphics[width=\textwidth]{../slike/grafsektorji.pdf}
+
+Zgornji graf - \verb|grafsektorji.pdf| prikazuje višino povprečne mesećne bruto plače odvisne od sektorja zaposlitve za Slovenijo v letu 2013.
+
 \includegraphics[width=\textwidth]{../slike/graftorta.pdf}
 
+Zgornji graf - \verb|graftorta.pdf| prikazuje tortni diagram višine plač po sektorjih(velikost kosa nam pove povprečno višino plače). Ta diagram nima nekega posebnega pomena - gre zgolj za nov primer uporabnega prikaza podatkov s programom R.
+\pagebreak
 \section{Analiza in vizualizacija podatkov}
 
-
+\pagebreak
 \section{Napredna analiza podatkov}
 
 
