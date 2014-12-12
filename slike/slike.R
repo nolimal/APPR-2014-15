@@ -31,7 +31,7 @@ legend("topright", c("Skupaj","Zakonodajalci, visoki uradniki, menedžerji",
                      "Poklici za storitve, prodajalci","Kmetovalci, gozdarji, ribiči, lovci",
                      "Poklici za neindustrijski način dela","Upravljalci strojev in naprav, industrijski izdelovalci in sestavljalci",
                      "Poklici za preprosta dela","Vojaški poklici"), 
-       fill = rainbow(11), cex=1.3, pch=-1, title="LEGENDA",text.font=1)
+       fill = rainbow(11), cex=1.3, pch=-1,bg = "white", title="LEGENDA",text.font=1)
 text(9,1800,"Vir: SURS (obdelal Nolimal Matevž)")
 par(op)
 
