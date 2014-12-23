@@ -7,51 +7,80 @@
 \pagestyle{plain}
 
 \begin{document}
-\title{Poročilo pri predmetu \\
-Analiza podatkov s programom R}
-\author{Matevž Nolimal}
-\maketitle
 
-\section{Razmere na trgu dela doma in v EU}
-Tabela za delovno aktivne po stopnjah dosežene izobrazbe, spolu in kohezijskih regijah, Slovenija, letno:\n
-http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0762104S&ti=&path=../Database/Dem_soc/07_trg_dela/02_07008_akt_preb_po_anketi/02_07621_akt_preb_ADS_letno/&lang=2\n
-Tabela za brezposelne po stopnjah dosežene izobrazbe, spolu in kohezijskih regijah, Slovenija, letno:\n
-http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0762112S&ti=&path=../Database/Dem_soc/07_trg_dela/02_07008_akt_preb_po_anketi/02_07621_akt_preb_ADS_letno/&lang=2\n
-Tabela za Zaposlene po regijah, spolu, času in ravni dosežene izobrazbe:\n
-http://appsso.eurostat.ec.europa.eu/nui/submitViewTableAction.do\n
+\begin{titlepage}
 
-Tabela za ekonomsko aktivno populacijo po spolu, starosti, najvišji ravni pridobljene izobrazbe ter NUTR 2 regij(1000):\n
-http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=lfst_r_lfp2acedu&lang=en\n
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\center
+
+\textsc{\LARGE Fakulteta za matematiko in fiziko}\\[1.5cm]
+\textsc{\Large Poročilo pri predmetu}\\[0.5cm]
+\textsc{\large Analiza podatkov s programom R}\\[0.5cm]
+\HRule \\[0.4cm]
+{ \huge \bfseries Razmere na trgu dela doma in v EU}\\[0.4cm] 
+\HRule \\[1.5cm]
 
 
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Avtor:}\\
+Matevž \textsc{Nolimal}
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Mentor:} \\
+Dr. Janoš \textsc{Vidali}
+\end{flushright}
+\end{minipage}\\[4cm]
+
+{\large \today}\\[3cm] 
+\vfill
+
+\end{titlepage}
+
+
+\section{Izbira teme}
+
+Izbrana tematika obsega statistično obdelavo gibanja ravni zaposlenosti po večih spremenljivkah. Razsežnost problema vpliva ne le na denarne tokovi, temveč tudi na območja motiva bega možganov in iskanja višjega zadovoljstva posameznikov. S pomočjo podatkov zbranih na portalu Eurostat in SURS ter ustrezno metodologijo bom oblikoval trenutno in preteklo podobo stanja na trgu dela, opredeljeno na državni oziroma regionalni ravni znotraj Europskega obroča.
+
+Zaradi velikih odstopanj v regionalni podobi deleža in derivata zaposlenih, obstaja ogromno uporabnih tabel, ki bodo ključ moje obdelave zbranih podatkov. Pričakujem, da bom numerično potrdil znan Okunov zakon, ki pravi da višjo gospodarsko rast dosegamo ob nižji brezposelnosti, zato bom veliko časa namenil tudi obdelavi tega izredno pomembnega dejavnika. Podatki v obliki \verb|XSL|, \verb|CSV|, \verb|HTML| in \verb|PDF| bom obdelal po večih spremenljivkah, kot so npr. spol, starost, najvišja raven izobrazbe, regija itn. Posvetil se bom tudi stroškom dela, strukturi zaslužka, meri aktivnosti, saj vsi našteti pomembno vplivajo na končno podobo. 
+
+Namen in cilj projekta je, da spoznam orodja analiziranja v programu R na konkretnem primeru in pridobim novo znanje s področja, ki ga bom analiziral. Dodana vrednost tega je interdisciplinarno povezovanje znanj, ki je zelo uporabno v modernih modelih poslovnega management-a.
+\pagebreak
 \section{Obdelava, uvoz in čiščenje podatkov}
-12.11.2014 izbral Temo po predelavi podatkov na straneh Eurostat-a in SURS-a7, ter napisal poglavje tematika v README.md.
 
-13.11.2014 v porocilo.tex napisal povezavi na tabele, ki sem si jih shranil v svoji mapi ter jih bom začel obdelovati\n
-\n
-14.11.2014 vnesel sem povezave do tabel v mapi podatki\n
-\n
-26.11.2014  vnesel sem program za uvoz podatkov CSV za zaposlenost v EU in sicer ZaposlenostEU\n
-\n
-27.11.2014  vnesel sem funkcijo, ki mi prebere podatke (po spremenljivkah)in izračuna povprečje\n
-\n
-28.11.2014  vnesel sem funkcijo, ki mi uvozi podatke CSV za AktivniSLO in urejenostno spremenljivk, ki primerja deleže in število aktivnih\n
-\n
-30.11.2014  vnesel sem funkcijo, ki mi uovzi podatke v obliki XML za AktivniSLO1\n
-\n
-1.12.2014 sem se ukvarjal s tipi spremenljivk v uvoženih XML datotekah\n
-\n
-2.12.2014 sem na vajah bolj optimalno spremenil tipe spremenljivk v tabelaxml1 in tabelaxml2\n
-\n
-3.12.2014 sem naredil grafe iz podatkov z uvoza\n
-\n
+Po izbiri obravnavane teme sem se lotil zbiranja podatkov v mapi podatki iz strani \verb|Eurostat-a| in \verb|SURS-a|. Ko sem imel shranjene podatkev tabelah \verb|CSV| sem v podprogramu \verb|uvoz.r| uvozil podatke iz datotek vrste \verb|CSV| in datotek vrste \verb|XML|(potrebno je bilo dodatno naložiti tudi paket \verb|XML|). Po uvozu sem v vsako izmed teh tabel dodal po vsaj eno urejenostno spremenljivko(ta je ponavadi primerjala podatke po vrsticah in jih nato rangirala). 
 
+Ker je bila uvožene tabela \verb|ZaposlenostEU| izredno velika in njeni podatko dokaj zahtevni za obdelavo sem si ustvaril pomožno matriko \verb|povprecje|, s katero sem si pomagal rangirati podatke po vrsticah in iz tega poračunati povprečje (to bom uporabil v kasnejših fazah).
+
+Pri vsem tem delu sem veliko časa namenil tipom spremenljivk. Ob uvozi preko \verb|read.csv2| sem naletel na težave s tipom spremenljivk factor, ki sem jih nato spremenil bodisi v character bodisi v integer. Pri uvozu preko \verb|XML| paketa pa sem dobil rezultate v tipu double, ki sem jih spremenil v integer in kjer je bilo potrebno v character. Uvožene podatke sem shranil v tabelah \verb|tabelaxml1| in \verb|tabelaxml2|.
+
+Po zaključenem uvozu podatkov sem jih začel smiselno urejati in prikazati v grafih.Ustvarjanje grafov iz podatkov uvoza mi je vzelo veliko časa, saj sem zaradi kompleksnosti prikazanih podatkov potreboval veliko časa(pred\-vsem se to nanaša na \verb|grafplot.pdf|). Po prejeti vmesni oceni sem se lotil še popravljanja potrebnih zadev(poročilo in glavnega programa \verb|projekt.r|, ki do tedaj ni imel nobenega pomena). Na naslednjih straneh se nahajajo omenjeni grafi.
+
+\includegraphics[width=\textwidth]{../slike/grafplot.pdf}
+
+Zgornji graf - \verb|grafplot.pdf| prikazuje število aktivnih v Sloveniji(v tisočih) glede na doseženo raven izobrazbe in ločeno po letih.
+
+\includegraphics[width=\textwidth]{../slike/grafpoklici.pdf}
+
+Zgornji graf - \verb|grafpoklici.pdf| prikazuje višino povprečne mesećne bruto plače odvisne od poklica za Slovenijo v letu 2013.
+
+\includegraphics[width=\textwidth]{../slike/grafsektorji.pdf}
+
+Zgornji graf - \verb|grafsektorji.pdf| prikazuje višino povprečne mesećne bruto plače odvisne od sektorja zaposlitve za Slovenijo v letu 2013.
+
+\includegraphics[width=\textwidth]{../slike/graftorta.pdf}
+
+Zgornji graf - \verb|graftorta.pdf| prikazuje tortni diagram višine plač po sektorjih(velikost kosa nam pove povprečno višino plače). Ta diagram nima nekega posebnega pomena - gre zgolj za nov primer uporabnega prikaza podatkov s programom R.
+\pagebreak
 \section{Analiza in vizualizacija podatkov}
 
-\includegraphics{../slike/povprecna_druzina.pdf}
-
+\pagebreak
 \section{Napredna analiza podatkov}
 
-\includegraphics{../slike/naselja.pdf}
+
 
 \end{document}
