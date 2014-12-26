@@ -203,4 +203,10 @@ tabelaxml2<-tabelaxml2[-1]
 tabelaxml2[,1:4]<-apply(tabelaxml2[,1:4], 2, function(x) as.numeric(gsub("[.]", "", x)))
 
 #View(tabelaxml2)
-#preverixml2<-str(tabelaxml2)
+# Zapišimo podatke v razpredelnico NezaposlenostEU.
+NezaposlenostEU <- read.csv2("podatki/nezaposlenost.csv", sep = ";", as.is = TRUE,
+                      col.names = c("Država", "Skupno13", "Moški13", "Ženske13"),skip=2,
+                      fileEncoding = "Windows-1250")
+NezaposlenostEU<-NezaposlenostEU[1:31,]
+NezaposlenostEU$NezaposlenostEU[,2:4] <- as.numeric(NezaposlenostEU$NezaposlenostEU[,2:4])
+cat("Uvažam podatke o nezaposlenosti v EU...razpredelnica NezaposlenostEU\n\n")
