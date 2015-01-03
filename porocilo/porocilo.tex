@@ -54,7 +54,7 @@ Namen in cilj projekta je, da spoznam orodja analiziranja v programu R na konkre
 
 Po izbiri obravnavane teme sem se lotil zbiranja podatkov v mapi podatki iz strani \verb|Eurostat-a| in \verb|SURS-a|. Ko sem imel shranjene podatkev tabelah \verb|CSV| sem v podprogramu \verb|uvoz.r| uvozil podatke iz datotek vrste \verb|CSV| in datotek vrste \verb|XML|(potrebno je bilo dodatno naložiti tudi paket \verb|XML|). Po uvozu sem v vsako izmed teh tabel dodal po vsaj eno urejenostno spremenljivko(ta je ponavadi primerjala podatke po vrsticah in jih nato rangirala). 
 
-Ker je bila uvožene tabela \verb|ZaposlenostEU| izredno velika in njeni podatko dokaj zahtevni za obdelavo sem si ustvaril pomožno matriko \verb|povprecje|, s katero sem si pomagal rangirati podatke po vrsticah in iz tega poračunati povprečje (to bom uporabil v kasnejših fazah).
+Ker je bila uvožene tabela \verb|ZaposlenostEU| izredno velika in njeni podatki dokaj zahtevni za obdelavo sem si ustvaril pomožno matriko \verb|povprecje|, s katero sem si pomagal rangirati podatke po vrsticah in iz tega poračunati povprečje (to bom uporabil v kasnejših fazah).
 
 Pri vsem tem delu sem veliko časa namenil tipom spremenljivk. Ob uvozi preko \verb|read.csv2| sem naletel na težave s tipom spremenljivk factor, ki sem jih nato spremenil bodisi v character bodisi v integer. Pri uvozu preko \verb|XML| paketa pa sem dobil rezultate v tipu double, ki sem jih spremenil v integer in kjer je bilo potrebno v character. Uvožene podatke sem shranil v tabelah \verb|tabelaxml1| in \verb|tabelaxml2|.
 
