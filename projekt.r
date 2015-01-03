@@ -1,7 +1,6 @@
 # Pobrišemo PDF-je in počistimo delovno okolje
 # silent <- TRUE
 # source("clearpdf.r", encoding = "UTF-8")
-source("clearpdf.r", encoding="UTF-8")
 # 2. faza: Obdelava, uvoz in čiščenje podatkov
 source("uvoz/uvoz.r", encoding="UTF-8")
 source("slike/slike.R", encoding="UTF-8")

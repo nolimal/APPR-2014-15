@@ -78,9 +78,41 @@ Zgornji graf - \verb|graftorta.pdf| prikazuje tortni diagram višine plač po se
 \pagebreak
 \section{Analiza in vizualizacija podatkov}
 
+Za analizo in vizualizacijo podatkov sem sprva vpeljal zemljevid sveta-\verb|svet|, v katerem so zbrani mnogi uporabni podatki, \verb|pop_est| sem uporabil tudi na zemljevidu držav EU. Ker sem obdeloval zgolj podatke zbrane iz držav članic EU, sem iz \verb|svet| pobral potrebne podatke in jih združil v \verb|EU|. Ker moje delo analizira razmere na trgu dela sem uvozil novo \verb|csv| datoteko z naslovom \verb|NezaposlenostEU|. Ker sem za obdelavo podatkov potreboval točno takšen vrstni red, kot pri tabeli \verb|EU|, sem poskrbel za popolno ujemanje vrstičnih imen, zato funkcije \verb|preuredi| sploh nisem potreboval, toda sem delal neposredno z indeksi. Tako sem spremenil vrstni red in dobil \verb|NNezaposlenostEU|. Pri vsem tem je bilo potrebno poskrbeti za pretvorbo v nize, saj so imena v zemljevidih predstavljena kot faktorji.
+
+Z ukazom \verb|spplot| in \verb|plot| sem ustvaril naslednje zemljevide:
+\begin{enumerate} 
+\item{\verb|EUSkupno.pdf|}
+
+\item{\verb|EUŽenske.pdf|}
+
+\item{\verb|EUMoški.pdf|}
+
+\item{\verb|populacija.pdf|}
+\end{enumerate}
+
+Prve tri tabele vsebujejo podatke iz uvožene \verb|csv| datoteke \verb|NezaposlenostEU|, zadnja pa iz zemljevida \verb|EU|.
+
+Po zaključeni obdelavi podatkov sem jih začel smiselno urejati in prikazati na zemljevidih.Ustvarjanje zemljevidov iz urejenih podatkov uvoza mi je vzelo dosti časa, saj sem moral popraviti tudi koordinate in smiselno razdeliti zemljevid, da je prikazal potrebno.Na naslednjih straneh se nahajajo omenjeni zemljevidi.
+
+\includegraphics[width=\textwidth]{../slike/EUSkupno.pdf}
+
+Zgornji zemljevid - \verb|EUSkupno.pdf| prikazuje delež nezaposlenih med aktivnimi prebivalci v letu 2013 v večini držav članic Evropske Unije.Podatki so iz uvožene \verb|csv| datoteke z naslovom \verb|NezaposlenostEU|.
+
+\includegraphics[width=\textwidth]{../slike/EUŽenske.pdf}
+
+Zgornji zemljevid - \verb|EUŽenske.pdf| prikazuje delež nezaposlenih med aktivnimi prebivalkami v letu 2013 v večini držav članic Evropske Unije.Podatki so iz uvožene \verb|csv| datoteke z naslovom \verb|NezaposlenostEU|.
+
+\includegraphics[width=\textwidth]{../slike/EUMoški.pdf}
+
+Zgornji zemljevid - \verb|EUŽenske.pdf| prikazuje delež nezaposlenih med aktivnimi moškimi prebivalci v letu 2013 v večini držav članic Evropske Unije.Podatki so iz uvožene \verb|csv| datoteke z naslovom \verb|NezaposlenostEU|.
+
+\includegraphics[width=\textwidth]{../slike/populacija.pdf}
+
+Zgornji zemljevid - \verb|populacija.pdf| prikazuje ocenjeno velikost prebivalstva v obravnavanih državah Evropske Unije za leto 2013. Slednja ocena je smotrna, za boljšo predstavo deležov v prejšnjih zemljevidih. Podatki so iz uvoženega zemljevida \verb|svet|.
+
 \pagebreak
 \section{Napredna analiza podatkov}
-
 
 
 \end{document}
