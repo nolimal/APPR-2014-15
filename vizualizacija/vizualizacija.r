@@ -73,7 +73,7 @@ print(spplot(Evropa, "Moški13", xlim=c(-25, 40), ylim=c(33, 73),
 dev.off() 
 # Narišimo zemljevid v PDF.
 cat("Rišem zemljevid o nezaposlenosti žensk v EU za leto 2013...\n")
-pdf("slike/EUzenske.pdf")
+pdf("slike/EUZenske.pdf")
 
 
 print(spplot(Evropa, "Ženske13", xlim=c(-25, 40), ylim=c(33, 73),

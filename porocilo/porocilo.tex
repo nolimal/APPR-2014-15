@@ -44,72 +44,72 @@ Dr. Janoš \textsc{Vidali}
 
 \section{Izbira teme}
 
-Izbrana tematika obsega statistično obdelavo gibanja ravni zaposlenosti po večih spremenljivkah. Razsežnost problema vpliva ne le na denarne tokovi, temveč tudi na območja motiva bega možganov in iskanja višjega zadovoljstva posameznikov. S pomočjo podatkov zbranih na portalu Eurostat in SURS ter ustrezno metodologijo bom oblikoval trenutno in preteklo podobo stanja na trgu dela, opredeljeno na državni oziroma regionalni ravni znotraj Europskega obroča.
+Izbrana tematika obsega statistično obdelavo gibanja ravni zaposlenosti po večih spremenljivkah. Razsežnost problema vpliva ne le na denarne tokovi, temveč tudi na območja motiva bega možganov in iskanja višjega zadovoljstva posameznikov. S pomočjo podatkov zbranih na portalu Eurostat in SURS ter ustrezno metodologijo bom oblikoval trenutno in preteklo podobo stanja na trgu dela, opredeljeno na državni oziroma regionalni ravni znotraj Europskega obroča. 
 
 Zaradi velikih odstopanj v regionalni podobi deleža in derivata zaposlenih, obstaja ogromno uporabnih tabel, ki bodo ključ moje obdelave zbranih podatkov. Pričakujem, da bom numerično potrdil znan Okunov zakon, ki pravi da višjo gospodarsko rast dosegamo ob nižji brezposelnosti, zato bom veliko časa namenil tudi obdelavi tega izredno pomembnega dejavnika. Podatki v obliki \verb|XSL|, \verb|CSV|, \verb|HTML| in \verb|PDF| bom obdelal po večih spremenljivkah, kot so npr. spol, starost, najvišja raven izobrazbe, regija itn. Posvetil se bom tudi stroškom dela, strukturi zaslužka, meri aktivnosti, saj vsi našteti pomembno vplivajo na končno podobo. 
 
-Namen in cilj projekta je, da spoznam orodja analiziranja v programu R na konkretnem primeru in pridobim novo znanje s področja, ki ga bom analiziral. Dodana vrednost tega je interdisciplinarno povezovanje znanj, ki je zelo uporabno v modernih modelih poslovnega management-a.
+Namen in cilj projekta je, da spoznam orodja analiziranja v programu R na konkretnem primeru in pridobim novo znanje s področja, ki ga bom analiziral. Dodana vrednost tega je interdisciplinarno povezovanje znanj, ki je zelo uporabno v modernih modelih poslovnega management-a. 
 \pagebreak
 \section{Obdelava, uvoz in čiščenje podatkov}
 
-Po izbiri obravnavane teme sem se lotil zbiranja podatkov v mapi podatki iz strani \verb|Eurostat-a| in \verb|SURS-a|. Ko sem imel shranjene podatkev tabelah \verb|CSV| sem v podprogramu \verb|uvoz.r| uvozil podatke iz datotek vrste \verb|CSV| in datotek vrste \verb|XML|(potrebno je bilo dodatno naložiti tudi paket \verb|XML|). Po uvozu sem v vsako izmed teh tabel dodal po vsaj eno urejenostno spremenljivko(ta je ponavadi primerjala podatke po vrsticah in jih nato rangirala). 
+Po izbiri obravnavane teme sem se lotil zbiranja podatkov v mapi podatki iz strani \verb|Eurostat-a| in \verb|SURS-a|. Ko sem imel shranjene podatkev tabelah \verb|CSV| sem v podprogramu \verb|uvoz.r| uvozil podatke iz datotek vrste \verb|CSV| in datotek vrste \verb|XML| (potrebno je bilo dodatno naložiti tudi paket \verb|XML|). Po uvozu sem v vsako izmed teh tabel dodal po vsaj eno urejenostno spremenljivko (ta je ponavadi primerjala podatke po vrsticah in jih nato rangirala). 
 
-Ker je bila uvožene tabela \verb|ZaposlenostEU| izredno velika in njeni podatki dokaj zahtevni za obdelavo sem si ustvaril pomožno matriko \verb|povprecje|, s katero sem si pomagal rangirati podatke po vrsticah in iz tega poračunati povprečje (to bom uporabil v kasnejših fazah).
+Ker je bila uvožene tabela \verb|ZaposlenostEU| izredno velika in njeni podatki dokaj zahtevni za obdelavo sem si ustvaril pomožno matriko \verb|povprecje|, s katero sem si pomagal rangirati podatke po vrsticah in iz tega poračunati povprečje (to bom uporabil v kasnejših fazah). 
 
-Pri vsem tem delu sem veliko časa namenil tipom spremenljivk. Ob uvozi preko \verb|read.csv2| sem naletel na težave s tipom spremenljivk factor, ki sem jih nato spremenil bodisi v character bodisi v integer. Pri uvozu preko \verb|XML| paketa pa sem dobil rezultate v tipu double, ki sem jih spremenil v integer in kjer je bilo potrebno v character. Uvožene podatke sem shranil v tabelah \verb|tabelaxml1| in \verb|tabelaxml2|.
+Pri vsem tem delu sem veliko časa namenil tipom spremenljivk. Ob uvozi preko \verb|read.csv2| sem naletel na težave s tipom spremenljivk factor, ki sem jih nato spremenil bodisi v character bodisi v integer. Pri uvozu preko \verb|XML| paketa pa sem dobil rezultate v tipu double, ki sem jih spremenil v integer in kjer je bilo potrebno v character. Uvožene podatke sem shranil v tabelah \verb|tabelaxml1| in \verb|tabelaxml2|. 
 
-Po zaključenem uvozu podatkov sem jih začel smiselno urejati in prikazati v grafih.Ustvarjanje grafov iz podatkov uvoza mi je vzelo veliko časa, saj sem zaradi kompleksnosti prikazanih podatkov potreboval veliko časa(pred\-vsem se to nanaša na \verb|grafplot.pdf|). Po prejeti vmesni oceni sem se lotil še popravljanja potrebnih zadev(poročilo in glavnega programa \verb|projekt.r|, ki do tedaj ni imel nobenega pomena). Na naslednjih straneh se nahajajo omenjeni grafi.
+Po zaključenem uvozu podatkov sem jih začel smiselno urejati in prikazati v grafih.Ustvarjanje grafov iz podatkov uvoza mi je vzelo veliko časa, saj sem zaradi kompleksnosti prikazanih podatkov potreboval veliko časa (pred\-vsem se to nanaša na \verb|grafplot.pdf|). Po prejeti vmesni oceni sem se lotil še popravljanja potrebnih zadev (poročilo in glavnega programa \verb|projekt.r|, ki do tedaj ni imel nobenega pomena). Na naslednjih straneh se nahajajo omenjeni grafi. 
 
 \includegraphics[width=\textwidth]{../slike/grafplot.pdf}
 
-Zgornji graf - \verb|grafplot.pdf| prikazuje število aktivnih v Sloveniji(v tisočih) glede na doseženo raven izobrazbe in ločeno po letih.
+Zgornji graf - \verb|grafplot.pdf| prikazuje število aktivnih v Sloveniji (v tisočih) glede na doseženo raven izobrazbe in ločeno po letih. 
 
 \includegraphics[width=\textwidth]{../slike/grafpoklici.pdf}
 
-Zgornji graf - \verb|grafpoklici.pdf| prikazuje višino povprečne mesećne bruto plače odvisne od poklica za Slovenijo v letu 2013.
+Zgornji graf - \verb|grafpoklici.pdf| prikazuje višino povprečne mesečne bru\-to plače odvisne od poklica za Slovenijo v letu 2013. 
 
 \includegraphics[width=\textwidth]{../slike/grafsektorji.pdf}
 
-Zgornji graf - \verb|grafsektorji.pdf| prikazuje višino povprečne mesećne bruto plače odvisne od sektorja zaposlitve za Slovenijo v letu 2013.
+Zgornji graf - \verb|grafsektorji.pdf| prikazuje višino povprečne mesečne bru\-to plače odvisne od sektorja zaposlitve za Slovenijo v letu 2013. 
 
 \includegraphics[width=\textwidth]{../slike/graftorta.pdf}
 
-Zgornji graf - \verb|graftorta.pdf| prikazuje tortni diagram višine plač po sektorjih(velikost kosa nam pove povprečno višino plače). Ta diagram nima nekega posebnega pomena - gre zgolj za nov primer uporabnega prikaza podatkov s programom R.
+Zgornji graf - \verb|graftorta.pdf| prikazuje tortni diagram višine plač po sektorjih (velikost kosa nam pove povprečno višino plače). Ta diagram nima nekega posebnega pomena - gre zgolj za nov primer uporabnega prikaza podatkov s programom R. 
 \pagebreak
 \section{Analiza in vizualizacija podatkov}
 
-Za analizo in vizualizacijo podatkov sem sprva vpeljal zemljevid sveta-\verb|svet|, v katerem so zbrani mnogi uporabni podatki, \verb|pop_est| sem uporabil tudi na zemljevidu držav EU. Ker sem obdeloval zgolj podatke zbrane iz držav članic EU, sem iz \verb|svet| pobral potrebne podatke in jih združil v \verb|EU|. Ker moje delo analizira razmere na trgu dela sem uvozil novo \verb|csv| datoteko z naslovom \verb|NezaposlenostEU|. Ker sem za obdelavo podatkov potreboval točno takšen vrstni red, kot pri tabeli \verb|EU|, sem poskrbel za popolno ujemanje vrstičnih imen, zato funkcije \verb|preuredi| sploh nisem potreboval, toda sem delal neposredno z indeksi. Tako sem spremenil vrstni red in dobil \verb|NNezaposlenostEU|. Pri vsem tem je bilo potrebno poskrbeti za pretvorbo v nize, saj so imena v zemljevidih predstavljena kot faktorji.
+Za analizo in vizualizacijo podatkov sem sprva vpeljal zemljevid sveta-\verb|svet|, v katerem so zbrani mnogi uporabni podatki, \verb|pop_est| sem uporabil tudi na zemljevidu držav EU. Ker sem obdeloval zgolj podatke zbrane iz držav članic EU, sem iz \verb|svet| pobral potrebne podatke in jih združil v \verb|EU|. Ker moje delo analizira razmere na trgu dela sem uvozil novo \verb|csv| datoteko z naslovom \verb|NezaposlenostEU|. Ker sem za obdelavo podatkov potreboval točno takšen vrstni red, kot pri tabeli \verb|EU|, sem poskrbel za popolno ujemanje vrstičnih imen, zato funkcije \verb|preuredi| sploh nisem potreboval, toda sem delal neposredno z indeksi. Tako sem spremenil vrstni red in dobil \verb|NNezaposlenostEU|. Pri vsem tem je bilo potrebno poskrbeti za pretvorbo v nize, saj so imena v zemljevidih predstavljena kot faktorji. 
 
-Z ukazom \verb|spplot| in \verb|plot| sem ustvaril naslednje zemljevide:
+Z ukazom \verb|spplot| in \verb|plot| sem ustvaril naslednje zemljevide: 
 \begin{enumerate} 
 \item{\verb|EUSkupno.pdf|}
 
-\item{\verb|EUŽenske.pdf|}
+\item{\verb|Zenske.pdf|}
 
-\item{\verb|EUMoški.pdf|}
+\item{\verb|EUMoski.pdf|}
 
 \item{\verb|populacija.pdf|}
 \end{enumerate}
 
-Prve tri tabele vsebujejo podatke iz uvožene \verb|csv| datoteke \verb|NezaposlenostEU|, zadnja pa iz zemljevida \verb|EU|.
+Prve tri tabele vsebujejo podatke iz uvožene \verb|csv| datoteke \verb|NezaposlenostEU|, zadnja pa iz zemljevida \verb|EU|. 
 
-Po zaključeni obdelavi podatkov sem jih začel smiselno urejati in prikazati na zemljevidih.Ustvarjanje zemljevidov iz urejenih podatkov uvoza mi je vzelo dosti časa, saj sem moral popraviti tudi koordinate in smiselno razdeliti zemljevid, da je prikazal potrebno.Na naslednjih straneh se nahajajo omenjeni zemljevidi.
+Po zaključeni obdelavi podatkov sem jih začel smiselno urejati in prikazati na zemljevidih.Ustvarjanje zemljevidov iz urejenih podatkov uvoza mi je vzelo dosti časa, saj sem moral popraviti tudi koordinate in smiselno razdeliti zemljevid, da je prikazal potrebno.Na naslednjih straneh se nahajajo omenjeni zemljevidi. 
 
 \includegraphics[width=\textwidth]{../slike/EUSkupno.pdf}
 
-Zgornji zemljevid - \verb|EUSkupno.pdf| prikazuje delež nezaposlenih med aktivnimi prebivalci v letu 2013 v večini držav članic Evropske Unije.Podatki so iz uvožene \verb|csv| datoteke z naslovom \verb|NezaposlenostEU|.
+Zgornji zemljevid - \verb|EUSkupno.pdf| prikazuje delež nezaposlenih med aktivnimi prebivalci v letu 2013 v večini držav članic Evropske Unije.Podatki so iz uvožene \verb|csv| datoteke z naslovom \verb|NezaposlenostEU|. 
 
-\includegraphics[width=\textwidth]{../slike/EUŽenske.pdf}
+\includegraphics[width=\textwidth]{../slike/EUZenske.pdf}
 
-Zgornji zemljevid - \verb|EUŽenske.pdf| prikazuje delež nezaposlenih med aktivnimi prebivalkami v letu 2013 v večini držav članic Evropske Unije.Podatki so iz uvožene \verb|csv| datoteke z naslovom \verb|NezaposlenostEU|.
+Zgornji zemljevid - \verb|EUZenske.pdf| prikazuje delež nezaposlenih med aktivnimi prebivalkami v letu 2013 v večini držav članic Evropske Unije.Podatki so iz uvožene \verb|csv| datoteke z naslovom \verb|NezaposlenostEU|. 
 
-\includegraphics[width=\textwidth]{../slike/EUMoški.pdf}
+\includegraphics[width=\textwidth]{../slike/EUMoski.pdf}
 
-Zgornji zemljevid - \verb|EUŽenske.pdf| prikazuje delež nezaposlenih med aktivnimi moškimi prebivalci v letu 2013 v večini držav članic Evropske Unije.Podatki so iz uvožene \verb|csv| datoteke z naslovom \verb|NezaposlenostEU|.
+Zgornji zemljevid - \verb|EUZenske.pdf| prikazuje delež nezaposlenih med aktivnimi moškimi prebivalci v letu 2013 v večini držav članic Evropske Unije.Podatki so iz uvožene \verb|csv| datoteke z naslovom \verb|NezaposlenostEU|. 
 
 \includegraphics[width=\textwidth]{../slike/populacija.pdf}
 
-Zgornji zemljevid - \verb|populacija.pdf| prikazuje ocenjeno velikost prebivalstva v obravnavanih državah Evropske Unije za leto 2013. Slednja ocena je smotrna, za boljšo predstavo deležov v prejšnjih zemljevidih. Podatki so iz uvoženega zemljevida \verb|svet|.
+Zgornji zemljevid - \verb|populacija.pdf| prikazuje ocenjeno velikost prebivalstva v obravnavanih državah Evropske Unije za leto 2013. Slednja ocena je smotrna, za boljšo predstavo deležov v prejšnjih zemljevidih. Podatki so iz uvoženega zemljevida \verb|svet|. 
 
 \pagebreak
 \section{Napredna analiza podatkov}
