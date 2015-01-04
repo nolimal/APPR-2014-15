@@ -9,25 +9,28 @@ svet <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturalearthd
                         "svet", "ne_110m_admin_0_countries.shp", mapa = "zemljevid",
                         encoding = "Windows-1250")
 
-#Logični vektor držav znotraj Evrope
-evropa<-svet$continent%in%"Europe" | svet$name_long == "Cyprus"
+#Logični vektor držav znotraj Evrope - dodana še Turčija
+evropa<-svet$continent%in%"Europe" | svet$name_long %in% c("Cyprus",
+                                                           "Turkey")
 #Podatki za države na področju Evrope
 Evropa<-svet[evropa,]
+m <- match(Evropa$name_long, row.names(NezaposlenostEU))
 
 #Logični vektor držav EU
 eu<-Evropa$name_long%in%row.names(NezaposlenostEU)
 #Podatki za države EU
 EU<-Evropa[eu,]
-#Znebimo se kolon s samimi NA-ji
-mask <- sapply(EU, function(x) any(is.na(x)))
-EU<-EU[!mask]
+
 #Naredimo NNezaposlenostEU s spremembo indeksov(potrebna je bila pretvorba v character)
 NNezaposlenostEU <- NezaposlenostEU[as.character(EU$name_long),]
-EU$Skupno13<-NNezaposlenostEU$Skupno13
-EU$Moški13<-NNezaposlenostEU$Moški13
-EU$Ženske13<-NNezaposlenostEU$Ženske13
-#Uredim koordinate in imena
+Evropa$Skupno13<-NNezaposlenostEU$Skupno13[m]
+Evropa$Moški13<-NNezaposlenostEU$Moški13[m]
+Evropa$Ženske13<-NNezaposlenostEU$Ženske13[m]
 
+# podzemljevid za države s podatki - za izpis imen
+EU <- Evropa[!is.na(m),]
+
+#Uredim koordinate in imena - samo za države s podatki
 koordinate <- coordinates(EU)
 imena <- as.character(EU$name_long)
 rownames(koordinate)<-imena
@@ -48,42 +51,37 @@ cat("Rišem zemljevid o skupni nezaposlenosti v EU za leto 2013...\n")
 pdf("slike/EUSkupno.pdf")
 
 
-print(spplot(EU, "Skupno13", xlim=c(-25, 40), ylim=c(33, 73),
+print(spplot(Evropa, "Skupno13", xlim=c(-25, 40), ylim=c(33, 73),
              main = "Stopnja nezaposlenosti v EU v letu 2013 (v %)",
              col.regions = topo.colors(100),
              sp.layout = list(
-               list("sp.polygons", NNezaposlenostEU[,1], fill = "white"),
-               list("sp.text", koordinate, imena, cex = 0.3)),
+               list("sp.polygons", Evropa[is.na(m),], fill = "white"),
+               list("sp.text", koordinate, imena, cex = 0.5,col="red")),
              par.settings = list(panel.background=list(col="lightyellow"))))
-
-
 dev.off() 
 # Narišimo zemljevid v PDF.
 cat("Rišem zemljevid o nezaposlenosti moških v EU za leto 2013...\n")
-pdf("slike/EUMoški.pdf")
+pdf("slike/EUMoski.pdf")
 
-
-print(spplot(EU, "Moški13", xlim=c(-25, 40), ylim=c(33, 73),
+print(spplot(Evropa, "Moški13", xlim=c(-25, 40), ylim=c(33, 73),
              main = "Stopnja nezaposlenosti v EU v letu 2013 (v %)",
              col.regions = topo.colors(100),
              sp.layout = list(
-               list("sp.polygons", NNezaposlenostEU[,2], fill = "white"),
-               list("sp.text", koordinate, imena, cex = 0.3)),
+               list("sp.polygons", Evropa[is.na(m),], fill = "white"),
+               list("sp.text", koordinate, imena, cex = 0.5,col="red")),
              par.settings = list(panel.background=list(col="lightyellow"))))
-
-
 dev.off() 
 # Narišimo zemljevid v PDF.
 cat("Rišem zemljevid o nezaposlenosti žensk v EU za leto 2013...\n")
-pdf("slike/EUŽenske.pdf")
+pdf("slike/EUzenske.pdf")
 
 
-print(spplot(EU, "Ženske13", xlim=c(-25, 40), ylim=c(33, 73),
-             main = "Stopnja nezaposlenosti v EU v letu 2013 (v %)",
+print(spplot(Evropa, "Ženske13", xlim=c(-25, 40), ylim=c(33, 73),
+             main = "Stopnja nezaposlenih žensk v EU v letu 2013 (v %)",
              col.regions = topo.colors(100),
              sp.layout = list(
-               list("sp.polygons", NNezaposlenostEU[,3], fill = "white"),
-               list("sp.text", koordinate, imena, cex = 0.3)),
+               list("sp.polygons", Evropa[is.na(m),], fill = "white"),
+               list("sp.text", koordinate, imena, cex = 0.5,col="red")),
              par.settings = list(panel.background=list(col="lightyellow"))))
 
 
@@ -97,12 +95,15 @@ koordinate1[,2]<-koordinate1[,2]+1
 koordinate1["United Kingdom",2] <- koordinate1["United Kingdom",2]+0.5
 koordinate1["Czech Republic",2] <- koordinate1["Czech Republic",2]+0.5
 
-pdf("slike/populacija.pdf")
-plot(EU, xlim=c(-25, 40), ylim=c(33, 73))
-text(koordinate,labels=EU$pop_est,cex = 0.45)
-text(koordinate1,labels=imena,cex = 0.5)
-title("Celotno ocenjeno prebivalstvo v letu 2013")
-dev.off()
+pdf("slike/prebivalstvo.pdf")
+print(spplot(Evropa, "pop_est", xlim=c(-25, 40), ylim=c(33, 73),
+            main = "Celotno ocenjeno prebivalstvo v letu 2013 v državah EU",
+            col.regions = topo.colors(10),
+            sp.layout = list(
+              list("sp.polygons", Evropa[is.na(m),], fill = "white"),
+              list("sp.text", koordinate, imena, cex = 0.5,col="red")),
+            par.settings = list(panel.background=list(col="lightyellow"))))
+dev.off
 # Funkcija, ki podatke preuredi glede na vrstni red v zemljevidu
 # preuredi <- function(podatki, zemljevid) {
 #   nove.regije <- c()
