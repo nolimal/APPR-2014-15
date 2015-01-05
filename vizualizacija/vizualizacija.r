@@ -103,7 +103,7 @@ print(spplot(Evropa, "pop_est", xlim=c(-25, 40), ylim=c(33, 73),
               list("sp.polygons", Evropa[is.na(m),], fill = "white"),
               list("sp.text", koordinate, imena, cex = 0.5,col="red")),
             par.settings = list(panel.background=list(col="lightyellow"))))
-dev.off
+dev.off()
 # Funkcija, ki podatke preuredi glede na vrstni red v zemljevidu
 # preuredi <- function(podatki, zemljevid) {
 #   nove.regije <- c()
