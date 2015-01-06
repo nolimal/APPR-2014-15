@@ -37,7 +37,7 @@ uvozi.zemljevid <- function(url, ime.zemljevida, pot.zemljevida,
     unzip(zip, exdir = map)
   }
   zemljevid <- readShapeSpatial(pot)
-
+  
   for (col in names(zemljevid)) {
     if (is.factor(zemljevid[[col]])) {
       zemljevid[[col]] <- factor(iconv(zemljevid[[col]], encoding))
