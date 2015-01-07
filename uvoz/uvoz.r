@@ -212,3 +212,9 @@ rownames(NezaposlenostEU)[5]<-"Germany"
 rownames(NezaposlenostEU)[29]<-"Macedonia"
 
 cat("Uvažam podatke o nezaposlenosti v EU...razpredelnica NezaposlenostEU\n\n")
+
+capitals <- read.csv2("podatki/country-capitals.csv", sep = ",", as.is = TRUE,
+                      ,fileEncoding = "Windows-1250")
+capitals$long<-as.numeric(capitals$long)
+capitals$lat<-as.numeric(capitals$lat)
+cat("Uvažam podatke o glavnih mestih EU...razpredelnica capitals\n\n")
