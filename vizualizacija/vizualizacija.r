@@ -49,14 +49,13 @@ imena["Czech Republic"] <- "Czech\nRepublic"
 # Narišimo zemljevid v PDF.
 cat("Rišem zemljevid o skupni nezaposlenosti v EU za leto 2013...\n")
 pdf("slike/EUSkupno.pdf")
-
-
+rot <- ifelse(imena == "Portugal", 90, 0)
 print(spplot(Evropa, "Skupno13", xlim=c(-25, 40), ylim=c(33, 73),
              main = "Stopnja nezaposlenosti v EU v letu 2013 (v %)",
              col.regions = topo.colors(100),
              sp.layout = list(
                list("sp.polygons", Evropa[is.na(m),], fill = "white"),
-               list("sp.text", koordinate, imena, cex = 0.5,col="red")),
+               list("sp.text", koordinate, imena, cex = 0.5,col="red", srt = rot)),
              par.settings = list(panel.background=list(col="lightyellow"))))
 dev.off() 
 # Narišimo zemljevid v PDF.
