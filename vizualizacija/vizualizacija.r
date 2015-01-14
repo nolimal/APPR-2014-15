@@ -61,26 +61,26 @@ dev.off()
 # Narišimo zemljevid v PDF.
 cat("Rišem zemljevid o nezaposlenosti moških v EU za leto 2013...\n")
 pdf("slike/EUMoski.pdf")
-
+rot <- ifelse(imena == "Portugal", 90, 0)
 print(spplot(Evropa, "Moški13", xlim=c(-25, 40), ylim=c(33, 73),
              main = "Stopnja nezaposlenosti v EU v letu 2013 (v %)",
              col.regions = topo.colors(100),
              sp.layout = list(
                list("sp.polygons", Evropa[is.na(m),], fill = "white"),
-               list("sp.text", koordinate, imena, cex = 0.5,col="red")),
+               list("sp.text", koordinate, imena, cex = 0.5,col="red", srt = rot)),
              par.settings = list(panel.background=list(col="lightyellow"))))
 dev.off() 
 # Narišimo zemljevid v PDF.
 cat("Rišem zemljevid o nezaposlenosti žensk v EU za leto 2013...\n")
 pdf("slike/EUZenske.pdf")
 
-
+rot <- ifelse(imena == "Portugal", 90, 0)
 print(spplot(Evropa, "Ženske13", xlim=c(-25, 40), ylim=c(33, 73),
              main = "Stopnja nezaposlenih žensk v EU v letu 2013 (v %)",
              col.regions = topo.colors(100),
              sp.layout = list(
                list("sp.polygons", Evropa[is.na(m),], fill = "white"),
-               list("sp.text", koordinate, imena, cex = 0.5,col="red")),
+               list("sp.text", koordinate, imena, cex = 0.5,col="red", srt = rot)),
              par.settings = list(panel.background=list(col="lightyellow"))))
 
 
@@ -95,12 +95,14 @@ koordinate1["United Kingdom",2] <- koordinate1["United Kingdom",2]+0.5
 koordinate1["Czech Republic",2] <- koordinate1["Czech Republic",2]+0.5
 
 pdf("slike/prebivalstvo.pdf")
+rot <- ifelse(imena == "Portugal", 90, 0)
+Evropa$pop_est<-Evropa$pop_est/1000000
 print(spplot(Evropa, "pop_est", xlim=c(-25, 40), ylim=c(33, 73),
-            main = "Celotno ocenjeno prebivalstvo v letu 2013 v državah EU",
-            col.regions = topo.colors(10),
+            main = "Ocenjeno prebivalstvo v letu 2013 v državah EU (v miljonih)",
+            col.regions = topo.colors(100),
             sp.layout = list(
               list("sp.polygons", Evropa[is.na(m),], fill = "white"),
-              list("sp.text", koordinate, imena, cex = 0.5,col="red")),
+              list("sp.text", koordinate, imena, cex = 0.5,col="red", srt = rot)),
             par.settings = list(panel.background=list(col="lightyellow"))))
 dev.off()
 # Funkcija, ki podatke preuredi glede na vrstni red v zemljevidu
