@@ -71,4 +71,45 @@ print(spplot(Evropa1, "Rast", xlim=c(-25, 40), ylim=c(33, 73),
                list("sp.polygons", Evropa1[is.na(h),], fill = "white"),
                list("sp.text", koordinate1, imena1, cex = 0.5,col="red", srt = rot)),
              par.settings = list(panel.background=list(col="lightyellow"))))
-dev.off() 
+dev.off()
+
+#Poiščimo povezave med BDP-jem in stopnjo nezaposlenosti po državah EU v letu 2013
+
+#Dodajmo podatek o nezaposlenosti v razpredelnico Evropa1 iz razpredelnice Evropa
+Evropa1$Nezaposleni<-Evropa$Skupno13
+#Začnimo tako kot na vajah:
+GdpEU$Sprememba<-as.numeric(GdpEU$Trenutno)-as.numeric(GdpEU$Predhodno)
+GdpEU$Rast<-GdpEU$Sprememba/as.numeric(GdpEU$Predhodno)*100
+GdpEU<-GdpEU[-16,]
+GdpEU$Nezaposleni<-NezaposlenostEU$Skupno13
+GdpEU<-GdpEU[,-1]
+
+GdpEU[,2]<-as.numeric(GdpEU[,2])
+GdpEU[,3]<-as.numeric(GdpEU[,3])
+GdpEU[,4]<-as.numeric(GdpEU[,4])
+GdpEU[,5]<-as.numeric(GdpEU[,5])
+GdpEU[,6]<-as.numeric(GdpEU[,6])
+zanima<-GdpEU[,5:6]
+#1.primer LINEARNA ZVEZA
+pdf("slike/EUOkunl.pdf")
+attach(zanima)
+plot(Rast,Nezaposleni)
+lin <- lm(Nezaposleni ~ Rast)
+abline(lin, col="blue")
+predict(lin, data.frame(Rast=seq(-4,8,1)))
+detach(zanima)
+dev.off()
+#2.primer NELINEARNA ZVEZA
+#Narišimo zemljevid v PDF.
+cat("Rišem zemljevid Okunovega zakona za države EU...\n")
+pdf("slike/EUOkunk.pdf")
+attach(zanima)
+pairs(zanima)
+plot(Rast,Nezaposleni)
+kv <- lm(Nezaposleni ~ I(Rast^2) + Rast)
+curve(predict(kv, data.frame(Rast=x)), add = TRUE, col = "red")
+detach(zanima)
+dev.off()
+
+#Začnimo z analizo podatkov za Slovenijo
+

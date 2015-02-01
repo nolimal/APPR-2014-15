@@ -146,5 +146,19 @@ Zgornji zemljevid - \verb|prebivalstvo.pdf| prikazuje ocenjeno velikost prebival
 \pagebreak
 \section{Napredna analiza podatkov}
 
+Začetni problem mojega projektnega dela je bil dokazati tako imenovani Okunov zakon, ki izpostavlja pomen agregatne proizvodnje na trgu dela. Izpostavlja linearno povezanost med naraščajočo zaposlenostjo oziroma padajočo nezaposlenostjo v odvisnosti od pozitvne gospodarske rasti. 
+
+V prvih fazah sem uvozil večino potrebnih podatkov o deležu nezaposlenih oz neaktivnih po posameznih državah EU. Dodatno sem razčlenil le podatke za Slovenijo, saj me je zanima ali se tudi slednja obnaša skladno z osnovnim makroekonomskim zakonom.
+
+V 4.fazi sem z namenom poiskati povezavo potreboval še podatke o bruto domačem proizvodu držav članic EU, ki sem jih našel na strani Eurostat-a v obliki \verb|CSV| datotek. Prišel sem do naslednjih zaključkov, ki jih bom sprva predstavil v obliki grafa.
+
+\makebox[\textwidth][c]{
+
+\includegraphics[width=1.35\textwidth]{../slike/EUOkunl.pdf}
+
+}
+Zgornji graf povezanosti kaže negativno linearno zvezo med nezaposlenostjo in gospodarsko rastjo. Točke na grafu predstavljajo članice EU, modra premica z začetno vrednostjo 11.9 in koeficientom -0.74. Omenjena podatka sem ugotovil iz povezanosti, ki je razvidna po spremenljivki \verb|lin|, ki je nastala s parjenjem oziroma iskanjem linearne zveze med tema spremenljivkama. Ta premica oziroma zveza je v makroekonomskem svetu poznana pod imenom Okunov zakon. Točke v levem spodnjem kotu, ki se najmanj ujemajo s pričakovanim so Švica, Norveška in Združeno kraljestvo. Razlog, da te države najbolj odstopajo lahko iščemo v mentaliteti prebivalstva, saj prebivalci ZK veljajo za konzervativne in so se že večkrat v zgodovini zoperstavili samoumevnemu odzivanju na spremembe v finančnem svetu(npr. večna dilema tečaja funt-evro). Razlog manjšega odzivanja Norveške in Švice je gotovo v tem, da je njihov bruto domači proizvod tako visok, da lažje prenese finančne šoke na trgu za ceno manjšega povzročanja skrbi med prebivalci. Ob enem je bil to tudi čas stabilnega deviznega tečaja med evrom in švicarskimi franki.Torej čeprav sem za omenjen graf potreboval le podatke o deležu nezaposlenih in gospodarsko rastjo med letom 2012 in 2013, sem dokazal tisto, kar sem si zadal že v prvi fazi projekta.
+
+
 
 \end{document}
