@@ -45,7 +45,7 @@ koordinate["Greece",1] <- koordinate["Greece",1]-0.8
 imena["United Kingdom"] <- "United\nKingdom"
 imena["Czech Republic"] <- "Czech\nRepublic"
 
-#PRIMERJAVA MED NEZAPOSLENOSTJO POPULACIJEV V LETU 2013 ZNORAJ EU
+#PRIMERJAVA MED NEZAPOSLENOSTJO POPULACIJE V LETU 2013 ZNORAJ EU
 # Narišimo zemljevid v PDF.
 cat("Rišem zemljevid o skupni nezaposlenosti v EU za leto 2013...\n")
 pdf("slike/EUSkupno.pdf")

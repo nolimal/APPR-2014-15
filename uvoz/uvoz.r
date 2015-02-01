@@ -218,3 +218,10 @@ capitals <- read.csv2("podatki/country-capitals.csv", sep = ",", as.is = TRUE,
 capitals$long<-as.numeric(capitals$long)
 capitals$lat<-as.numeric(capitals$lat)
 cat("Uvažam podatke o glavnih mestih EU...razpredelnica capitals\n\n")
+
+# Zapišimo podatke v razpredelnico GdpEU.
+GdpEU <- read.csv2("podatki/nama_10_gdp_1_Data.csv", row.names=2,sep = ",",as.is = TRUE,
+                             skip=0,
+                             fileEncoding = "Windows-1250")
+
+cat("Uvažam podatke o GDP v EU...razpredelnica GdpEU\n\n")

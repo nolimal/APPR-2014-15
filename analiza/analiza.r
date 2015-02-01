@@ -1,17 +1,74 @@
 # 4. faza: Analiza podatkov
 
 # Uvozimo funkcijo za uvoz spletne strani.
-source("lib/xml.r")
+source("lib/uvozi.zemljevid.r")
 
-# Preberemo spletno stran v razpredelnico.
-cat("Uvažam spletno stran...\n")
-tabela <- preuredi(uvozi.obcine(), obcine)
+# Zapišimo podatke v razpredelnico GdpEU.
+GdpEU <- read.csv2("podatki/nama_10_gdp_1_Data.csv", row.names=2,sep = ",",as.is = TRUE,
+                   skip=0,
+                   fileEncoding = "Windows-1250")
+
+cat("Uvažam podatke o GDP v EU...razpredelnica GdpEU\n\n")
 
 # Narišemo graf v datoteko PDF.
-cat("Rišem graf...\n")
-pdf("slike/naselja.pdf", width=6, height=4)
-plot(tabela[[1]], tabela[[4]],
-     main = "Število naselij glede na površino občine",
-     xlab = "Površina (km^2)",
-     ylab = "Št. naselij")
-dev.off()
+# 3. faza: Izdelava zemljevida
+
+# Uvozimo funkcijo za pobiranje in uvoz zemljevida.
+source("lib/uvozi.zemljevid.r")
+#Uvozimo zemljevid sveta
+cat("Uvažam zemljevid sveta1...\n")
+svet <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_countries.zip",
+                        "svet", "ne_110m_admin_0_countries.shp", mapa = "zemljevid",
+                        encoding = "Windows-1250")
+
+#Logični vektor držav znotraj Evrope - dodana še Turčija
+evropa1<-svet$continent%in%"Europe" | svet$name_long %in% c("Cyprus",
+                                                           "Turkey")
+#Podatki za države na področju Evrope
+Evropa1<-svet[evropa1,]
+h <- match(Evropa1$name_long, row.names(GdpEU))
+
+#Logični vektor držav EU
+eu1<-Evropa1$name_long%in%row.names(GdpEU)
+#Podatki za države EU
+EU1<-Evropa1[eu1,]
+
+#Naredimo NNezaposlenostEU s spremembo indeksov(potrebna je bila pretvorba v character)
+GGdpEU <- GdpEU[as.character(EU1$name_long),]
+Evropa1$GDP13<-GdpEU$Trenutno[h]
+Evropa1$GDP12<-GdpEU$Predhodno[h]
+# podzemljevid za države s podatki - za izpis imen
+EU1 <- Evropa1[!is.na(h),]
+
+#Uredim koordinate in imena - samo za države s podatki
+koordinate1 <- coordinates(EU1)
+imena1 <- as.character(EU1$name_long)
+rownames(koordinate1)<-imena1
+names(imena1)<-imena1
+
+koordinate1["Norway",1] <- koordinate1["Norway",1] - 2
+koordinate1["Cyprus",2] <- koordinate1["Cyprus",2] - 1
+koordinate1["United Kingdom",1] <- koordinate1["United Kingdom",1]+1
+koordinate1["United Kingdom",2] <- koordinate1["United Kingdom",2]-1
+koordinate1["Sweden",1] <- koordinate1["Sweden",1]-1
+koordinate1["Greece",1] <- koordinate1["Greece",1]-0.8
+imena1["United Kingdom"] <- "United\nKingdom"
+imena1["Czech Republic"] <- "Czech\nRepublic"
+
+Evropa1$GDP13[28]<-"8122.6"
+Evropa1$GDP12[28]<-"8110.5"
+Evropa1$Sprememba<-as.numeric(Evropa1$GDP13)-as.numeric(Evropa1$GDP12)
+Evropa1$Rast<-Evropa1$Sprememba/as.numeric(Evropa1$GDP12)*100
+
+#Narišimo zemljevid v PDF.
+cat("Rišem zemljevid o stopnje rasti za države EU za leto 2013 v primerjavi za leto 2012...\n")
+pdf("slike/EURast.pdf")
+rot <- ifelse(imena1 == "Portugal", 90, 0)
+print(spplot(Evropa1, "Rast", xlim=c(-25, 40), ylim=c(33, 73),
+             main = "Stopnje rasti za države EU (v %)",
+             col.regions = topo.colors(20),
+             sp.layout = list(
+               list("sp.polygons", Evropa1[is.na(h),], fill = "white"),
+               list("sp.text", koordinate1, imena1, cex = 0.5,col="red", srt = rot)),
+             par.settings = list(panel.background=list(col="lightyellow"))))
+dev.off() 
