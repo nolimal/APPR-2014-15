@@ -100,7 +100,7 @@ predict(lin, data.frame(Rast=seq(-4,8,1)))
 detach(zanima)
 dev.off()
 #2.primer NELINEARNA ZVEZA
-#Narišimo zemljevid v PDF.
+#Narišimo graf v PDF.
 cat("Rišem zemljevid Okunovega zakona za države EU...\n")
 pdf("slike/EUOkunk.pdf")
 attach(zanima)
@@ -111,4 +111,42 @@ detach(zanima)
 dev.off()
 
 #Začnimo z analizo podatkov za Slovenijo
+#Podatki so iz SURS-a
+zanima1<-AktivniSLO[1,seq(4,14,2)]
+zanima1[2,]<-AktivniSLO[1,seq(5,15,2)]
+#dodajmo vrstico s podatki o bruto domačem proizvodu za Slovenijo v milijonih EUR
+zanima1[3,1:6]<-c(37951,36166,36220,36868,23006,36144)
+#uredimo imena
+row.names(zanima1)<-c("Aktivni","Aktivni (v %)","BDP (v mio EUR)")
+#Transponirajmo
+zanima1<-t(zanima1)
+#Definirajmo kot data frame
+zanima1<-as.data.frame(zanima1, row.names = row.names(zanima1))
+#Dodajmo stolpec deleža nezaposlenih
+zanima1[,4]<-100-zanima1[,2]
+#sprememnimo ime stolpca
+names(zanima1)[4]<-"Neaktivni"
+#Definirajmo kot data frame
+zanima1<-as.data.frame(zanima1, row.names = row.names(zanima1))
+#Dodajmo podatke o stopnji rasti
+zanima1$RastBDP<-c(3.3,-7.8,1.2,0.6,-2.6,-1.0)
+#Definirajmo kot data frame
+zanima1<-as.data.frame(zanima1, row.names = row.names(zanima1))
 
+#1.primer LINEARNA ZVEZA
+pdf("slike/EUOkuns.pdf")
+attach(zanima1)
+plot(RastBDP,Neaktivni)
+lin <- lm(Neaktivni ~ RastBDP)
+abline(lin, col="blue")
+predict(lin, data.frame(RastBDP=seq(-8,6,1)))
+detach(zanima1)
+dev.off()
+
+#Narišimo graf v PDF.
+# cat("Rišem zemljevid Okunovega zakona za Slovenijo med leti 2008 in 2013...\n")
+# pdf("slike/EUOkuns.pdf")
+# attach(zanima1)
+# plot(Delež,Bruto)
+# detach(zanima)
+#dev.off()
