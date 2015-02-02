@@ -168,6 +168,26 @@ Na naslednjem grafu sem pokazal še nelinearno zvezo oziroma kvadratno zvezo, t.
 }
 
 \pagebreak
-V drugem delu četrte faze sem se osredotočil zgolj na trg dela v Sloveniji, saj me je ob vseh teh podatkih zanimalo ali se tako kot večina držav znotraj Unije obnaša tudi naša država.
+V drugem delu četrte faze sem se osredotočil zgolj na trg dela v odvisnosti od agregatne proizvodnje v Sloveniji med leti 2008 in 2013, saj me je ob vseh teh podatkih zanimalo ali se je tako kot večina držav znotraj Unije obnašala tudi Slovenija. 
+
+Odgovor za to navidez preprosto vprašanje še zdaleč ni tako enoznačen kot je to veljajo za večino ostalih držav Evropske Unije. Najlažje bo idejo povezanosti razčleniti ob naslednjih grafih, ki prikazujejo odvisnost brezposelnosti od rasti bruto domačega proizvoda.
+
+\makebox[\textwidth][c]{
+
+\includegraphics[width=1.35\textwidth]{../slike/EUOkunsl.pdf}
+
+}
+Na zgornjem grafu lahko potrdimo Okunov zakon v manjši meri kot na podlagi podatkov, ki so zajemali celotno statistiko Evropske Unije. Najbolj zanimivo je iskati vzroke, za dejstvo, da se makroekonomski zakon ne potrjuje povsem suvereno. Največje odstopanje od povprečne vrednosti lahko zasledimo pri podatku za leto 2009, ko je slovensko gospodarstvo utrpelo skoraj 8 odstotni padec namesto od želene 2-3 odstotne rasti. Kje tilijo razlogi za kar dvakrat večji padec od povprečja Evropske Unije v letu 2009, kako je obseg državnega proračuna padel za kar dve milijardi evrov v enem letu.
+
+Prva možna razlaga je slab odziv politike na finančno krizo. Z drugačnimi monetarnimi oziroma fiskalnimi politikami, bi depresijo lahko prebrodili veliko bolj učinkovito. Druga opcija je lahko zadolženost slovenskih podjetij (velik delež državnega lastništva) zaradi investicijskih projektov, ki v času krize niso prinašale dovolj velikega donosa v primerjavi s stroški premoženja. Tretji razlog pa bi lahko bil dolgoletna posledica neracionalnosti v gospodarstvu zaradi odlašanja premika k bolj tehnološkim panogam, torej reševanje "izgubljenih" podjetij je omililo odziv na brezposelnost. Omenjena bi po Okunovem zakonu morala v prihodnjih obdobjih poskočiti bolj kot je razvidno na grafu. To so trije poglavitni razlogi za odstopanje od pričakovanega večjega naklona (ta je tukaj le -0.03).
+
+\makebox[\textwidth][c]{
+
+\includegraphics[width=1.35\textwidth]{../slike/EUOkunsn.pdf}
+
+}
+
+Na zgornjem grafu sem prikazal še metodo prileganja z zlepki. Za slednjo sem moral naložiti paket \verb|mgcv|, da sem lahko uporabil funkcijo \verb|loess|.
+
 
 \end{document}

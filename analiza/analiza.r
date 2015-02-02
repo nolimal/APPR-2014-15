@@ -142,9 +142,9 @@ plot(RastBDP,Neaktivni)
 lin1 <- lm(Neaktivni ~ RastBDP)
 abline(lin1, col="blue")
 #predict(lin1, data.frame(RastBDP=seq(-2,6,1)))
+text(-3,48.5,paste0(round(lin1$coefficients[1],2),round(lin1$coefficients[2],2),"x"),cex=0.8)
 detach(zanima1)
 dev.off()
-
 #2.primer PRILEGANJE Z ZLEPKI
 cat("Rišem graf Okunovega zakona z metodo prileganja z zlepki za Slovenijo...\n")
 pdf("slike/EUOkunsz.pdf")
