@@ -108,7 +108,7 @@ legend("right", c("Skupaj", "Brez izobrazbe","Nepopolna osnovnošolska", "Osnovn
        col=rainbow(7), pch=0:6, lty=1:6)
 dev.off()
 
-pdf("porocilo/graf.pdf")
+cairo_pdf("porocilo/graf.pdf", onefile = TRUE, family = "Arial")
 
 barplot(tabelaxml2$Skupaj,beside = TRUE,main="Plače po sektorjih", xlab="SEKTORJI",
         ylab="POVPREČNE PLAČE [€]",col=rainbow(5),ylim=c(0,2000),xlim=c(0,6.25))
