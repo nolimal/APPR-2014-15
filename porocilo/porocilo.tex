@@ -205,4 +205,104 @@ Prva možna razlaga je slab odziv politike na finančno krizo. Z drugačnimi mon
 Na zgornjem grafu sem prikazal še metodo prileganja z zlepki. Za slednjo sem moral naložiti paket \verb|mgcv|, da sem lahko uporabil funkcijo \verb|loess|.
 
 
+\pagebreak
+\section{Informacije o uporabljenih tabelah}
+
+V tem razdelku bom opisal pomembnejše tabele, ki sem jih uporabil v projektu, ter tipe njihovih spremenljivk.
+
+Tabela \verb|ZaposlenostEU| vsebuje 96 opazovanj za 30 spremenljivk. Spremenljivke so naslednje:
+
+\begin{itemize}
+  \item V stolpcu \textit{Država} se nahaja ime države. Spremenljivka je imenska.
+  \item V stolpcu \textit{Spol} so podani Total/Males/Females, ki so prav tako imenska spremenljivka.
+  \item V stolpcih \textit{Skupno.2008} do \textit{Skupno.2013} sestavljajo podatki o skupnem številu aktivnih v milijonih  za posamezne držav ločeno po spolu. Spremenljivka je številska.
+  \item V stolpcih \textit{Ravni.0.2.2008} do \textit{Ravni.0.2.2013} in podobno še za ostale ravni do \textit{Ravni.5.8.2013} sestavljajo podatki o številu aktivnih z doseženo izobrazbo ravni po ISCED kategorizaciji v milijonih za posamezne držav ločeno po spolu. Spremenljivke so številske.  
+  \item Stolpec \textit{Primerjava.1}, ki sem ga sam dodal, primerja podatke med leti 2008 in 2013 in jih razvrsti bodisi Več ali Manj. Ta spremenljivka je urejenostna. Podobno delujejo tudi \textit{Primerjava.2}, \textit{Primerjava.3} in \textit{Primerjava.4}.
+\end{itemize}
+
+Tabela \verb|AktivniSLO| vsebuje 54 opazovanj za 17 spremenljivk. Spremenljivke so naslednje:
+
+\begin{itemize}
+  \item V stolpcu \textit{Regija} se nahaja ime regije. Spremenljivka je imenska.
+  \item V stolpcu \textit{Spol} so podani Skupno/Moški/Ženske, ki so prav tako imenska spremenljivka.
+  \item V stolpcu \textit{Izobrazba} je informacija o zaključeni izobrazbi opazovanih objektov. Kategorij je pet. Spremenljivka je imenska.
+  \item V stolpcih \textit{Aktivni.08} do \textit{Aktivni.13} so podatki o številu aktivnih z doseženo izobrazbo ravni v tisočih za posamezne regije, ločeno po spolu. Spremenljivke so številske.
+   \item V stolpcih \textit{Delež.aktivnih.08} do \textit{Delež.aktivnih.13} so podatki o deležih aktivnih z doseženo izobrazbo ravni v tisočih za posamezne regije, ločeno po spolu. Spremenljivke so številske.
+   \item Stolpec \textit{Primerjava.08.13}, ki sem ga sam dodal, primerja podatke med leti 2008 in 2013 in jih razvrsti bodisi več ali manj. Ta spremenljivka je urejenostna. Podobno deluje tudi \textit{Primerjava.deleža.08.13}.
+\end{itemize}
+
+Tabela \verb|tabelaxml1| vsebuje 11 opazovanj za 5 spremenljivk. Spremenljivke so naslednje:
+
+\begin{itemize}
+  \item V stolpcu \textit{Poklicne skupine} se nahaja ime poklicne skupine. Spremenljivka je imenska.
+  \item V stolpcu \textit{Skupaj} so podani podatki o povprečni bruto plači za oba spola. Gre za številsko spremenljivko.
+  \item V stolpcu \textit{Moški} so podani podatki o povprečni bruto plači za moške. Gre za številsko spremenljivko.
+  \item V stolpcu \textit{Ženske} so podani podatki o povprečni bruto plači za ženske. Gre za številsko spremenljivko.
+   \item V stolpcu \textit{Razmerje Ž/M} je podano razmerje med plačo po istih skupinah poklicev ločeno po spolu.
+\end{itemize}
+
+Tabela \verb|tabelaxml2| vsebuje 5 opazovanj za 4 spremenljivke. Spremenljivke so naslednje:
+
+\begin{itemize}
+  \item V stolpcu \textit{row.names} se nahaja ime sektorja. Spremenljivka je imenska.
+  \item V stolpcu \textit{Skupaj} so podani podatki o povprečni bruto plači po sektorju. Gre za številsko spremenljivko.
+  \item V stolpcu \textit{Osnovnošolska izobrazba ali manj} so podani podatki o povprečni bruto plači. Gre za številsko spremenljivko.
+  \item V stolpcu \textit{Sprednješolska izobrazba} so podani podatki o povprečni bruto plači. Gre za številsko spremenljivko.
+   \item V stolpcu \textit{Visoka, višja izobrazba} so podani podatki o povprečni bruto plači. Gre za številsko spremenljivko.
+\end{itemize}
+
+Tabela \verb|GdpEU| vsebuje 29 opazovanj za 6 spremenljivk. Spremenljivke so naslednje:
+
+\begin{itemize}
+  \item V stolpcu \textit{row.names} se nahaja ime države. Spremenljivka je imenska.
+  \item V stolpcu \textit{Leto} je podana spremnljivka po letih. Gre za številsko spremenljivko.
+  \item V stolpcu \textit{Trenutno} so podani podatki o BDP-ju držav članic EU za leto 2012 v EUR. Gre za številsko spremenljivko.
+  \item V stolpcu \textit{Predhodno} so podani podatki o BDP-ju držav članic EU za leto 2013  EUR. Gre za številsko spremenljivko.
+  \item V stolpcu \textit{Sprememba} je podana sprememba med letom 2012 in 2013. Gre za številsko spremenljivko.
+  \item V stolpcu \textit{Rast} so podani podatki o rasti BDP za omenjeno obdobje. Gre za številsko spremenljivko.
+  \item V stolpcu \textit{Nezaposleni} je podan delež nezaposlenih po državah članicah v letu 2013.
+\end{itemize}
+
+Tabela \verb|GdpEU| vsebuje 240 opazovanj za 6 spremenljivk. Spremenljivke so naslednje:
+
+\begin{itemize}
+  \item V stolpcu \textit{country} se nahaja ime države. Spremenljivka je imenska.
+  \item V stolpcu \textit{capital} se nahaja ime prestolnice. Spremenljivka je imenska.
+  \item V stolpcu \textit{lat} se nahaja geometrijska širina. Gre za številsko spremenljivko.
+  \item V stolpcu \textit{long} se nahaja geometrijska dolžina. Gre za številsko spremenljivko.
+  \item V stolpcu \textit{CountryCode} je podana okrajšava za državo. Spremenljivka je imenska.
+  \item V stolpcu \textit{ContinentName} se nahaja ime kontinenta. Spremenljivka je imenska.
+\end{itemize}
+
+
+\pagebreak
+\section{Informacije o virih}
+\begin{thebibliography}{9}
+
+\bibitem{Wiki}
+  \url{http://en.wikipedia.org/wiki/East_Coast_of_the_United_States},
+  {Accessed: 10-02-2015}
+\bibitem{Wiki2}
+  \url{http://en.wikipedia.org/wiki/List_of_states_and_territories_of_the_United_States},
+  {Accessed: 10-02-2015}
+\bibitem{Wiki3}
+  \url{http://en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_population},
+  {Accessed: 10-02-2015}
+\bibitem{4}
+  \url{http://en.wikipedia.org/wiki/Demographics_of_the_United_States},
+  {Accessed: 10-02-2015}
+\bibitem{5}
+  \url{http://en.wikipedia.org/wiki/Montana},
+  {Accessed: 10-02-2015}
+\bibitem{6}
+  \url{http://en.wikipedia.org/wiki/K-means_clustering}
+  {Accessed: 10-02-2015}
+\bibitem{7}
+  \url{http://www.latex-project.org/}
+  {Accessed: 10-02-2015}
+\bibitem{8}
+  \url{http://biogeo.ucdavis.edu/data/gadm2/shp/USA_adm.zip}
+  {Accessed: 10-02-2015}
+  
+\end{thebibliography}
 \end{document}
