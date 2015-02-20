@@ -55,13 +55,13 @@ Namen in cilj projekta je, da spoznam orodja analiziranja v programu R na konkre
 \pagebreak
 \section{Obdelava, uvoz in čiščenje podatkov}
 
-Po izbiri obravnavane teme sem se lotil zbiranja podatkov v mapi podatki iz strani \verb|Eurostat-a| in \verb|SURS-a|. Ko sem imel shranjene podatkev tabelah \verb|CSV| sem v podprogramu \verb|uvoz.r| uvozil podatke iz datotek vrste \verb|CSV| in datotek vrste \verb|XML| (potrebno je bilo dodatno naložiti tudi paket \verb|XML|). Po uvozu sem v vsako izmed teh tabel dodal po vsaj eno urejenostno spremenljivko (ta je ponavadi primerjala podatke po vrsticah in jih nato rangirala). 
+Po izbiri obravnavane teme sem se lotil zbiranja podatkov v mapi podatki iz strani \verb|Eurostat-a| in \verb|SURS-a|. Ko sem imel shranjene podatke v tabelah \verb|CSV| sem v podprogramu \verb|uvoz.r| uvozil podatke iz datotek vrste \verb|CSV| in datotek vrste \verb|XML| (potrebno je bilo dodatno naložiti tudi paket \verb|XML|). Po uvozu sem v vsako izmed teh tabel dodal po vsaj eno urejenostno spremenljivko (ta je ponavadi primerjala podatke po vrsticah in jih nato rangirala). 
 
-Ker je bila uvožene tabela \verb|ZaposlenostEU| izredno velika in njeni podatki dokaj zahtevni za obdelavo sem si ustvaril pomožno matriko \verb|povprecje|, s katero sem si pomagal rangirati podatke po vrsticah in iz tega poračunati povprečje (to bom uporabil v kasnejših fazah). 
+Ker je bila uvožena tabela \verb|ZaposlenostEU| izredno velika in njeni podatki dokaj zahtevni za obdelavo sem si ustvaril pomožno matriko \verb|povprecje|, s katero sem si pomagal rangirati podatke po vrsticah in iz tega poračunati povprečje (to bom uporabil v kasnejših fazah). 
 
-Pri vsem tem delu sem veliko časa namenil tipom spremenljivk. Ob uvozi preko \verb|read.csv2| sem naletel na težave s tipom spremenljivk factor, ki sem jih nato spremenil bodisi v character bodisi v integer. Pri uvozu preko \verb|XML| paketa pa sem dobil rezultate v tipu double, ki sem jih spremenil v integer in kjer je bilo potrebno v character. Uvožene podatke sem shranil v tabelah \verb|tabelaxml1| in \verb|tabelaxml2|. 
+Pri vsem tem delu sem veliko časa namenil tipom spremenljivk. Ob uvozu preko \verb|read.csv2| sem naletel na težave s tipom spremenljivk factor, ki sem jih nato spremenil bodisi v character bodisi v integer. Pri uvozu preko \verb|XML| paketa pa sem dobil rezultate v tipu double, ki sem jih spremenil v integer in kjer je bilo potrebno v character. Uvožene podatke sem shranil v tabelah \verb|tabelaxml1| in \verb|tabelaxml2|. 
 
-Po zaključenem uvozu podatkov sem jih začel smiselno urejati in prikazati v grafih.Ustvarjanje grafov iz podatkov uvoza mi je vzelo veliko časa, saj sem zaradi kompleksnosti prikazanih podatkov potreboval veliko časa (pred\-vsem se to nanaša na \verb|grafplot.pdf|). Po prejeti vmesni oceni sem se lotil še popravljanja potrebnih zadev (poročilo in glavnega programa \verb|projekt.r|, ki do tedaj ni imel nobenega pomena). Na naslednji strani se nahaja animacija z vsemi vključenimi grafi iz druge faze. Spodaj je podan opis le teh.
+Po zaključenem uvozu podatkov sem jih začel smiselno urejati in prikazati v grafih. Ustvarjanje grafov iz podatkov uvoza mi je vzelo veliko časa, saj sem zaradi kompleksnosti prikazanih podatkov potreboval veliko časa (pred\-vsem se to nanaša na \verb|grafplot.pdf|). Po prejeti vmesni oceni sem se lotil še popravljanja potrebnih zadev (poročilo in glavnega programa \verb|projekt.r|, ki do tedaj ni imel nobenega pomena). Na naslednji strani se nahaja animacija z vsemi vključenimi grafi iz druge faze. Spodaj je podan opis le teh.
 % \makebox[\textwidth][c]{
 % 
 % \includegraphics[width=1.35\textwidth]{../slike/grafplot.pdf}
@@ -95,7 +95,7 @@ Po zaključenem uvozu podatkov sem jih začel smiselno urejati in prikazati v gr
 % Zgornji graf - \verb|graftorta.pdf| prikazuje tortni diagram višine plač po sektorjih (velikost kosa nam pove povprečno višino plače). Ta diagram nima nekega posebnega pomena - gre zgolj za nov primer uporabnega prikaza podatkov s programom R. 
 
 \begin{center}
-\animategraphics[controls,loop, width=1.2\linewidth]{1}{graf}{0}{4}\\
+\animategraphics[controls,loop, width=1\linewidth]{1}{graf}{0}{4}\\
 \end{center}
 
 Prvi graf - \verb|Plače po sektorjih| prikazuje višino povprečne mesečne bru\-to plače odvisne od sektorja zaposlitve za Slovenijo v letu 2013. Po podatkih sodeč so te najvišje v javnih družbah. Javne družbe so izdajatelji, katerih vrednostni papirji so uvrščeni v trgovanje na organiziranem trgu v Republiki Sloveniji ali v drugi državi članici Evropske Unije. Za njih velja posebna obveznost razkrivanja nadzorovanih informacij (ZTFI). Med njimi so tudi NLB, KD skupina, Pivovarna Laško, Cinkarna, Žito, Triglav naložbe in še mnoge druge. Javne družbe so pomemben del gospodarstva Slovenije, saj ima SLovenija eden izmed največjih deležov gospodarstva v svoji lasti v primerjavi z drugimi članicami Evropske Unije. Kako dobro, če sploh, je to za gospodarstvo sem deloma analiziral tudi v četrti fazi. Na drugi strani pa vidimo, da po podatkih SURS-a najmanjše bruto plače prejemajo zaposleni v zasebnem sektorju, toda zavedati se moramo, da so tukaj obeleženi le redni prejemki.
@@ -124,7 +124,7 @@ Z ukazom \verb|spplot| in \verb|plot| sem ustvaril naslednje zemljevide:
 
 Prve tri tabele vsebujejo podatke iz uvožene \verb|csv| datoteke \texttt{Ne\-za\-pos\-le\-nost\-EU}, zadnja pa iz zemljevida \verb|EU|. 
 
-Po zaključeni obdelavi podatkov sem jih začel smiselno urejati in prikazati na zemljevidih.Ustvarjanje zemljevidov iz urejenih podatkov uvoza mi je vzelo dosti časa, saj sem moral popraviti tudi koordinate in smiselno razdeliti zemljevid, da je prikazal potrebno.Na naslednjih straneh se nahajajo omenjeni zemljevidi. 
+Po zaključeni obdelavi podatkov sem jih začel smiselno urejati in prikazati na zemljevidih. Ustvarjanje zemljevidov iz urejenih podatkov uvoza mi je vzelo dosti časa, saj sem moral popraviti tudi koordinate in smiselno razdeliti zemljevid, da je prikazal potrebno.Na naslednjih straneh se nahajajo omenjeni zemljevidi. 
 
 \makebox[\textwidth][c]{
 
@@ -140,7 +140,7 @@ Zgornji zemljevid - \verb|EUSkupno.pdf| prikazuje delež nezaposlenih med aktivn
 
 }
 
-Zgornji zemljevid - \verb|EUZenske.pdf| prikazuje delež nezaposlenih med aktivnimi prebivalkami v letu 2013 v večini držav članic Evropske Unije.Podatki so iz uvožene \verb|csv| datoteke z naslovom \verb|NezaposlenostEU|. Opazimo, da imajo ženske največjo stopnjo brezposelnosti v Litvi. Slovenija ima tudi eno izmed višjih stopenj brezposelnosti med članicami Evropske Unije za ženske. Najnižjo stopnjo registrirane brezposelnosti pa imajo na Finskem.
+Zgornji zemljevid - \verb|EUZenske.pdf| prikazuje delež nezaposlenih med aktivnimi prebivalkami v letu 2013 v večini držav članic Evropske Unije. Podatki so iz uvožene \verb|csv| datoteke z naslovom \verb|NezaposlenostEU|. Opazimo, da imajo ženske največjo stopnjo brezposelnosti v Litvi. Slovenija ima tudi eno izmed višjih stopenj brezposelnosti med članicami Evropske Unije za ženske. Najnižjo stopnjo registrirane brezposelnosti pa imajo na Finskem.
 
 \makebox[\textwidth][c]{
 
@@ -148,7 +148,7 @@ Zgornji zemljevid - \verb|EUZenske.pdf| prikazuje delež nezaposlenih med aktivn
 
 }
 
-Zgornji zemljevid - \verb|EUMoski.pdf| prikazuje delež nezaposlenih med aktivnimi moškimi prebivalci v letu 2013 v večini držav članic Evropske Unije. Podatki so iz uvožene \verb|csv| datoteke z naslovom \verb|NezaposlenostEU|. Slovenija je na tem področju po podatkih Eurostat-a na samem dnu Evropske Unije, toda zavedati se moramo dejstva, da registrirana brezposelnost ni ekvivalentna anketni brezposelnosti. Lahko gre zgolj za dejtsvo, da se v Sloveniji mnogim izplača biti raje brezposeln in ponuditi svoje delo v sivi ekonomiji. Ker imamo za brezposelne kar dobre socialne transferje, lahko ravno obraten pojav vidimo v Rusiji, kjer je registrirana brezposlenost nizka, saj se prebivalcem ne izplača biti brezposeln zaradi slabih socialnih prejemkov.
+Zgornji zemljevid - \verb|EUMoski.pdf| prikazuje delež nezaposlenih med aktivnimi moškimi prebivalci v letu 2013 v večini držav članic Evropske Unije. Podatki so iz uvožene \verb|csv| datoteke z naslovom \verb|NezaposlenostEU|. Slovenija je na tem področju po podatkih Eurostat-a na samem dnu Evropske Unije, toda zavedati se moramo dejstva, da registrirana brezposelnost ni ekvivalentna anketni brezposelnosti. Lahko gre zgolj za dejstvo, da se v Sloveniji mnogim izplača biti raje brezposeln in ponuditi svoje delo v sivi ekonomiji. Ker imamo za brezposelne kar dobre socialne transferje, lahko ravno obraten pojav vidimo v Rusiji, kjer je registrirana brezposlenost nizka, saj se prebivalcem ne izplača biti brezposeln zaradi slabih socialnih prejemkov.
 
 \makebox[\textwidth][c]{
 
@@ -163,7 +163,7 @@ Zgornji zemljevid - \verb|prebivalstvo.pdf| prikazuje ocenjeno velikost prebival
 
 Začetni problem mojega projektnega dela je bil dokazati tako imenovani Okunov zakon, ki izpostavlja pomen agregatne proizvodnje na trgu dela. Izpostavlja linearno povezanost med naraščajočo zaposlenostjo oziroma padajočo nezaposlenostjo v odvisnosti od pozitvne gospodarske rasti. 
 
-V prvih fazah sem uvozil večino potrebnih podatkov o deležu nezaposlenih oz neaktivnih po posameznih državah EU. Dodatno sem razčlenil le podatke za Slovenijo, saj me je zanima ali se tudi slednja obnaša skladno z osnovnim makroekonomskim zakonom.
+V prvih fazah sem uvozil večino potrebnih podatkov o deležu nezaposlenih oz. neaktivnih po posameznih državah EU. Dodatno sem razčlenil le podatke za Slovenijo, saj me je zanima ali se tudi slednja obnaša skladno z osnovnim makroekonomskim zakonom.
 
 V 4.fazi sem z namenom poiskati povezavo potreboval še podatke o bruto domačem proizvodu držav članic EU, ki sem jih našel na strani Eurostat-a v obliki \verb|CSV| datotek. Prišel sem do naslednjih zaključkov, ki jih bom sprva predstavil v obliki grafov.
 
@@ -185,14 +185,14 @@ Na naslednjem grafu sem pokazal še nelinearno zvezo oziroma kvadratno zvezo, t.
 \pagebreak
 V drugem delu četrte faze sem se osredotočil zgolj na trg dela v odvisnosti od agregatne proizvodnje v Sloveniji med leti 2008 in 2013, saj me je ob vseh teh podatkih zanimalo ali se je tako kot večina držav znotraj Unije obnašala tudi Slovenija. 
 
-Odgovor za to navidez preprosto vprašanje še zdaleč ni tako enoznačen kot je to veljajo za večino ostalih držav Evropske Unije. Najlažje bo idejo povezanosti razčleniti ob naslednjih grafih, ki prikazujejo odvisnost brezposelnosti od rasti bruto domačega proizvoda.
+Odgovor za to navidez preprosto vprašanje še zdaleč ni tako enoznačen, kot je to veljajo za večino ostalih držav Evropske Unije. Najlažje bo idejo povezanosti razčleniti ob naslednjih grafih, ki prikazujejo odvisnost brezposelnosti od rasti bruto domačega proizvoda.
 
 \makebox[\textwidth][c]{
 
-\includegraphics[width=1.35\textwidth]{../slike/EUOkunsl.pdf}
+\includegraphics[width=1\textwidth]{../slike/EUOkunsl.pdf}
 
 }
-Na zgornjem grafu lahko potrdimo Okunov zakon v manjši meri kot na podlagi podatkov, ki so zajemali celotno statistiko Evropske Unije. Najbolj zanimivo je iskati vzroke, za dejstvo, da se makroekonomski zakon ne potrjuje povsem suvereno. Največje odstopanje od povprečne vrednosti lahko zasledimo pri podatku za leto 2009, ko je slovensko gospodarstvo utrpelo skoraj 8 odstotni padec namesto od želene 2-3 odstotne rasti. Kje tilijo razlogi za kar dvakrat večji padec od povprečja Evropske Unije v letu 2009, kako je obseg državnega proračuna padel za kar dve milijardi evrov v enem letu.
+Na zgornjem grafu lahko potrdimo Okunov zakon v manjši meri, kot na podlagi podatkov, ki so zajemali celotno statistiko Evropske Unije. Najbolj zanimivo je iskati vzroke za dejstvo, da se makroekonomski zakon ne potrjuje povsem suvereno. Največje odstopanje od povprečne vrednosti lahko zasledimo pri podatku za leto 2009, ko je slovensko gospodarstvo utrpelo skoraj 8 odstotni padec namesto od želene 2-3 odstotne rasti. Kje tilijo razlogi za kar dvakrat večji padec od povprečja Evropske Unije v letu 2009, kako je obseg državnega proračuna padel za kar dve milijardi evrov v enem letu.
 
 Prva možna razlaga je slab odziv politike na finančno krizo. Z drugačnimi monetarnimi oziroma fiskalnimi politikami, bi depresijo lahko prebrodili veliko bolj učinkovito. Druga opcija je lahko zadolženost slovenskih podjetij (velik delež državnega lastništva) zaradi investicijskih projektov, ki v času krize niso prinašale dovolj velikega donosa v primerjavi s stroški premoženja. Tretji razlog pa bi lahko bil dolgoletna posledica neracionalnosti v gospodarstvu zaradi odlašanja premika k bolj tehnološkim panogam, torej reševanje "izgubljenih" podjetij je omililo odziv na brezposelnost. Omenjena bi po Okunovem zakonu morala v prihodnjih obdobjih poskočiti bolj kot je razvidno na grafu. To so trije poglavitni razlogi za odstopanje od pričakovanega večjega naklona (ta je tukaj le -0.03).
 
